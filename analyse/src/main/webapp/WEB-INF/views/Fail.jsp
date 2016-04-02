@@ -53,6 +53,7 @@ line-height:30px;
 <p> Accés non autorisé ! </p>
 <p> Veuillez vérifier vos coordonnées </p>
 </div>
+	<div>div added by Sabrine</div>
 	<div id="conteneur">
 		<div id="menu">
 		
