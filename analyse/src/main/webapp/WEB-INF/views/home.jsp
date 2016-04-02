@@ -7,7 +7,8 @@
 </head>
 <style>
 body{
-background:url(resources/images/fond_new.jpg) no-repeat center;
+
+background-color : #FFFFFF;
 background-size:1900px,700px;
 font-family:Arial,sans-serif;
 font-size:25px;

@@ -19,7 +19,8 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  background: #FFFFFF;
+  
   font-family: 'Titillium Web', sans-serif;
 }
 
@@ -217,7 +218,7 @@ textarea {
           
           <p class="forgot"><a href="#">mot de passe oublié?</a></p>
           
-          <button class="button button-block"/>Log In</button>
+          <button class="button button-block"/>Se connecter</button>
           
           </form>
 

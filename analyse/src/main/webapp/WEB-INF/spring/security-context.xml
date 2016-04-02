@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<b:beans xmlns="http://www.springframework.org/schema/security"
+<!-- ajouter namespace security pour avoir l'autocompletion -->
+<b:beans xmlns:security="http://www.springframework.org/schema/security"
         xmlns:p="http://www.springframework.org/schema/p" 
         xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+		
+<security:http pattern="/index" security="none"></security:http>
 
-<http pattern="/index" security="none"></http>
-
- <http auto-config="true"  use-expressions="true">
-        <intercept-url pattern="/index" access="permitAll" />
+ <security:http auto-config="true"  use-expressions="true">
+        <security:intercept-url pattern="/index" access="permitAll" />
       
-          <intercept-url pattern="/home" access="hasAnyRole('ROLE_ADMIN','ROLE_Directeur','ROLE_Personel')"/>
+          <security:intercept-url pattern="/home" access="hasAnyRole('ROLE_ADMIN','ROLE_Directeur','ROLE_Personel')"/>
+           
           
-        
-        <form-login login-page="/index" default-target-url="/home"
+        <security:form-login login-page="/" default-target-url="/home"
         
         username-parameter="username"
 		password-parameter="password"
          authentication-failure-url="/fail"
          />
       
-       <logout invalidate-session="true" 
+       <security:logout invalidate-session="true" 
        
         logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
-    </http>
+    </security:http>
     
     
     <b:bean class="com.ensi.serviceImpl.UserDetailsServiceImpl" id="myCustomUserDetails"></b:bean>
 
-	<authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="myCustomUserDetails" >
-
-		</authentication-provider>
-	</authentication-manager>
+	<security:authentication-manager alias="authenticationManager">
+<!-- 		<security:authentication-provider user-service-ref="myCustomUserDetails" > -->
+			<security:authentication-provider>
+<!--  simplement des noms d'utilisateurs et password pour le debug mais l'authentification doit etre avec le Dao  -->
+			<security:user-service>
+				<security:user name="directeur" password="password" authorities="ROLE_Directeur"/>
+				<security:user name="responsable" password="password" authorities="ROLE_ADMIN"/>
+				<security:user name="personel" password="password" authorities="ROLE_Personel"/>
+				
+			</security:user-service>
+		</security:authentication-provider>
+		
+	</security:authentication-manager>
 
  
 </b:beans>
