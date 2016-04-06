@@ -69,8 +69,8 @@ public class PassifNonCourant implements java.io.Serializable{
 		return reserves;
 	}
 
-	public void setReserves(float réserves) {
-		reserves = réserves;
+	public void setReserves(float reserves) {
+		this.reserves = reserves;
 	}
 
 	@Column(name = "autresCapiteauxPropres", length = 50)
@@ -87,8 +87,8 @@ public class PassifNonCourant implements java.io.Serializable{
 		return resultatReporte;
 	}
 
-	public void setResultatReporte(float résultatReporte) {
-		resultatReporte = résultatReporte;
+	public void setResultatReporte(float resultatReporte) {
+		this.resultatReporte = resultatReporte;
 	}
 
 	@Column(name = "resultatExercice", length = 50)
@@ -96,8 +96,8 @@ public class PassifNonCourant implements java.io.Serializable{
 		return resultatExercice;
 	}
 
-	public void setResultatExercice(float résultatExercice) {
-		resultatExercice = résultatExercice;
+	public void setResultatExercice(float resultatExercice) {
+		this.resultatExercice = resultatExercice;
 	}
 
 	@Column(name = "emprunts", length = 50)

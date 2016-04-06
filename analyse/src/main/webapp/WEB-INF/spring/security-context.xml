@@ -30,15 +30,15 @@
     <b:bean class="com.ensi.serviceImpl.UserDetailsServiceImpl" id="myCustomUserDetails"></b:bean>
 
 	<security:authentication-manager alias="authenticationManager">
-<!-- 		<security:authentication-provider user-service-ref="myCustomUserDetails" > -->
-			<security:authentication-provider>
-<!--  simplement des noms d'utilisateurs et password pour le debug mais l'authentification doit etre avec le Dao  -->
-			<security:user-service>
-				<security:user name="directeur" password="password" authorities="ROLE_Directeur"/>
-				<security:user name="responsable" password="password" authorities="ROLE_ADMIN"/>
-				<security:user name="personel" password="password" authorities="ROLE_Personel"/>
+		<security:authentication-provider user-service-ref="myCustomUserDetails" >
+<!-- 			<security:authentication-provider> -->
+<!--   simplement des noms d'utilisateurs et password pour le debug mais l'authentification doit etre avec le Dao  --> 
+<!-- 			<security:user-service> -->
+<!-- 				<security:user name="directeur" password="password" authorities="ROLE_Directeur"/> -->
+<!-- 				<security:user name="responsable" password="password" authorities="ROLE_ADMIN"/> -->
+<!-- 				<security:user name="personel" password="password" authorities="ROLE_Personel"/> -->
 				
-			</security:user-service>
+<!-- 			</security:user-service> -->
 		</security:authentication-provider>
 		
 	</security:authentication-manager>

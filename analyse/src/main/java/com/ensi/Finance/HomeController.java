@@ -221,9 +221,9 @@ public class HomeController {
 
 	/*--------------------------------*/
 	
-	@RequestMapping(value = "/GestionDonnées")
-	public String GestionDonnées(Model model) {
-		return "GestionDonnées";
+	@RequestMapping(value = "/GestionDonnees")
+	public String GestionDonnees(Model model) {
+		return "GestionDonnees";
 	}
 	@RequestMapping(value = "/GestionAnalyses")
 	public String GestionAnalyse(Model model) {
@@ -249,9 +249,9 @@ public class HomeController {
 	public String EffetDeLevier(Model model) {
 		return "EffetDeLevier";
 	}
-	@RequestMapping(value = "/Décisions")
-	public String GestionDécision(Model model) {
-		return "GestionDécision";
+	@RequestMapping(value = "/Decisions")
+	public String GestionDecision(Model model) {
+		return "GestionDecision";
 	}
 	@RequestMapping(value = "/Tri")
 	public String TriProjets(Model model) {
@@ -391,15 +391,15 @@ public class HomeController {
 	/* ------------------------------*/ 
 	
 	@RequestMapping(value = "/InsertionDonnees")
-	public String InsertionDonnées(Model model) {
+	public String InsertionDonnees(Model model) {
 		return "InsertionDonnees";
 	}
 	@RequestMapping(value = "/ModificationDonnees")
-	public String ModificationDonnées(Model model) {
+	public String ModificationDonnees(Model model) {
 		return "ModificationDonnées";
 	}
 	@RequestMapping(value = "/SuppressionDonnees")
-	public String SuppressionDonnées(Model model) {
+	public String SuppressionDonnees(Model model) {
 		return "SuppressionDonnées";
 	}
 	@RequestMapping(value = "/ConsultationDonnees")
@@ -574,7 +574,7 @@ public class HomeController {
 			@RequestParam(value = "creanceClients", required = false) String creanceClients,
 			@RequestParam(value = "creanceDiverses", required = false) String creanceDiverses,
 			@RequestParam(value = "placements", required = false) String placements,
-			@RequestParam(value = "liquidités", required = false) String liquidités,
+			@RequestParam(value = "liquidites", required = false) String liquidites,
 
 			@RequestParam(value = "creanceEtat", required = false) String creanceEtat) {
 
@@ -587,7 +587,7 @@ public class HomeController {
 		ac.setCreanceEtat(Float.parseFloat(creanceEtat));
 		ac.setCreanceEtat(Float.parseFloat(creanceDiverses));
 		ac.setCreanceEtat(Float.parseFloat(placements));
-		ac.setCreanceEtat(Float.parseFloat(liquidités));
+		ac.setCreanceEtat(Float.parseFloat(liquidites));
 
 		data2service.saveActifCourant(ac);
 
@@ -866,7 +866,7 @@ public class HomeController {
 			@RequestParam(value = "creanceClients", required = false) String creanceClients,
 			@RequestParam(value = "creanceDiverses", required = false) String creanceDiverses,
 			@RequestParam(value = "placements", required = false) String placements,
-			@RequestParam(value = "liquidités", required = false) String liquidités,
+			@RequestParam(value = "liquidites", required = false) String liquidites,
 
 			@RequestParam(value = "creanceEtat", required = false) String creanceEtat) {
 
@@ -880,7 +880,7 @@ public class HomeController {
 		ac.setCreanceEtat(Float.parseFloat(creanceEtat));
 		ac.setCreanceEtat(Float.parseFloat(creanceDiverses));
 		ac.setCreanceEtat(Float.parseFloat(placements));
-		ac.setCreanceEtat(Float.parseFloat(liquidités));
+		ac.setCreanceEtat(Float.parseFloat(liquidites));
 
 		data2service.updateActifCourant(ac);
 
