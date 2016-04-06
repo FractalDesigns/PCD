@@ -38,6 +38,13 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             <div class="navbar-header">
                 <a class="navbar-brand" href="home">Analyse Financière</a>
             </div>
@@ -80,10 +87,18 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Formulaires<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                	<script> function insereractif() {
+                                		$("#form_container").load("insereractif");
+                                		$(".page-header").text("Inserer actif courant");
+                                	}</script>
+                                    <a  onclick ="insereractif()"href="#insereractifcourant">Actif Courant</a>
+                                    
                                 </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                <li><script> function insereractifNC() {
+                                		$("#form_container").load("insereractifNC");
+                                		$(".page-header").text("Inserer actif non courant");
+                                	}</script>
+                                    <a onclick ="insereractifNC()" href="#insereractifNC">Actif non Courant</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -113,6 +128,7 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
+                <div id ="form_container" class='row'></div>
             </div>
             <!-- /.container-fluid -->
         </div>
