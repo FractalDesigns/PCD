@@ -44,11 +44,7 @@ import com.ensi.service.UserService;
 
 
 @Controller
-
 public class HomeController {
-
-	
-
 	@Autowired
 	private UserService userservice;
 	@Autowired
@@ -184,25 +180,26 @@ public class HomeController {
 
 	//-------------------------------------------------------------------------//
 	@RequestMapping(value = "/home")
-	 public String homePage(Model model) {
+	public String homePage(Model model) {
 
-		        Set<String> roles = AuthorityUtils
-		                .authorityListToSet(SecurityContextHolder.getContext()
-		                        .getAuthentication().getAuthorities());
-		        Authentication authentication = SecurityContextHolder.getContext()
-						.getAuthentication();
-		        Collection collectionRole=authentication.getAuthorities();
-					
-		        if (roles.contains("ROLE_ADMIN")){ 
-		            return ("home");}
-		         if(roles.contains("ROLE_Personel")){
-		        return  ("homePersonnel");}
-		        	  if(roles.contains("ROLE_Directeur")){
-			        return ("homeDirector");}
-		        	 if (roles == null) 
-		        		 return ("Fail");
-                       return "home";
-		    }
+		Set<String> roles = AuthorityUtils
+				.authorityListToSet(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Collection collectionRole = authentication.getAuthorities();
+
+		if (roles.contains("ROLE_ADMIN")) {
+			return ("home");
+		}
+		if (roles.contains("ROLE_Personel")) {
+			return ("homePersonnel");
+		}
+		if (roles.contains("ROLE_Directeur")) {
+			return ("homeDirector");
+		}
+		if (roles == null)
+			return ("Fail");
+		return "home";
+	}
 	
 
 	@RequestMapping(value = "/homePersonel")
@@ -301,6 +298,16 @@ public class HomeController {
 		model.addObject("listActifCourant", listActifCourant);
 
 		return model;
+	}
+	
+	@RequestMapping(value="/insereractif" )
+	public String insererActifCourant(Model model){
+		
+		return "InsertActifC";
+	}
+	@RequestMapping(value="/insereractifNC" )
+	public String insererActifNonCourant(Model model){
+		return "InsertActifNC";
 	}
 	
 /*------------ Affichage (PNC)---------------*/
@@ -542,8 +549,7 @@ public class HomeController {
 	
 	/* ----------------------- Insertion Donnees(ANC) -------------------*/
 	
-	@RequestMapping(value = "/insertData", method = { RequestMethod.POST,
-			RequestMethod.GET })
+	@RequestMapping(value = "/insertData", method = { RequestMethod.POST,RequestMethod.GET })
 	public  @ResponseBody ModelAndView insertData(
 			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "annee", required = false) String annee,

@@ -28,6 +28,8 @@ public class Role implements java.io.Serializable {
 	/**
 	 * 
 	 */
+	   
+	
 	private static final long serialVersionUID = 1L;
 	private Integer idRole;
 	private String name;
@@ -68,9 +70,6 @@ public class Role implements java.io.Serializable {
 	public String getType() {
 		return type;
 	}
-
-
-
 	public Role(Integer idRole, String name, String type, List<User> users) {
 		super();
 		this.idRole = idRole;
@@ -78,11 +77,7 @@ public class Role implements java.io.Serializable {
 		this.type = type;
 		this.users = users;
 	}
-
-
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
 }
