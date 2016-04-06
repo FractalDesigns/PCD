@@ -4,50 +4,6 @@
 <head>
 	<title>Gestion Des Utilisateurs</title>
 </head>
-<style>
-body{
-background:url(resources/images/fond_new.jpg) no-repeat center;
-background-size:1900px,700px;
-font-family:Arial,sans-serif;
-font-size:25px;
-color:	#FF7F50;
-margin: 100px;
-}
-#top{
-text-align:center;
-font-size:30px;
-text-shadow: 5px 5px 5px #FF0000;
-
-}
-
-
-#conteneur{
-width:1200px;
-margin:160px 150px 0 150px;
-
-}
-
-#menu ul li{
-list-style:none;
-float:left;
-padding:0;
-
-}
-#menu ul li a{
-height:70px;
-width:150px;
-display:block;
-font-size:18px;
-line-height:43px;
-text-decoration:none;
-color: 	#696969;
-text-align:center;
-}
-#menu ul li a:hover {
-line-height:30px;
-}
-</style>
-  
   <body>
 <div id="top"><p>Application d'Analyse Financière</p>
 <p>Gestion Des Utilisateurs</p> </div>	
