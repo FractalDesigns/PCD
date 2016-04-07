@@ -13,8 +13,7 @@ input {
 </style>
 </head>
 <body>
-	<div id="conteneur">
-		<div id="menu">
+	
 		<form action="insertData" method="post">
     
     <table>
@@ -50,8 +49,7 @@ input {
     
  
     </form>
-		</div>	   
-		</div>
+	
  
 </body>
 </html>

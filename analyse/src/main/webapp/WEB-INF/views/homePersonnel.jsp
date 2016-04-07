@@ -62,27 +62,44 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="home"><i class="fa fa-dashboard fa-fw"></i>Tableau de bord</a>
-                        </li>
-                    
+                       
 <!--                         make dropdown forms -->
 
 <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Formulaires<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                	<script> function insereractif() {
+                                		$("#form_container").load("insereractifC");
+                                		$(".page-header").text("Inserer actif courant");
+                                	}</script>
+                                    <a  onclick ="insereractif()"href="#insereractifcourant">Actif Courant</a>
+                                    
                                 </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                <li><script> function insereractifNC() {
+                                		$("#form_container").load("insereractifNC");
+                                		$(".page-header").text("Inserer actif non courant");
+                                	}</script>
+                                    <a onclick ="insereractifNC()" href="#insereractifNC">Actif non Courant</a>
+                                </li>
+                                <li><script> function insererpassifC() {
+                                		$("#form_container").load("insererpassifC");
+                                		$(".page-header").text("Inserer passif courant");
+                                	}</script>
+                                    <a onclick ="insererpassifC()" href="#insererpassifC">Passif Courant</a>
+                                </li>
+                                <li><script> function insererpassifNC() {
+                                		$("#form_container").load("insererpassifNC");
+                                		$(".page-header").text("Inserer passif non courant");
+                                	}</script>
+                                    <a onclick ="insererpassifNC()" href="#insererpassifNC">Passif non Courant</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         
 <!--                         end  of drop down form -->
-                        
+                              
                        <li>
                        <c:url value="/j_spring_security_logout" var="logoutUrl" />
                         <a href="${logoutUrl}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>

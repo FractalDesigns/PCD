@@ -15,8 +15,7 @@ input {
 
 <body>
 
-	<div id="conteneur">
-		<div id="menu">
+	
 			<form action="insertData2" method="post">
 
 				<table>
@@ -79,8 +78,7 @@ input {
 					</tr>
 				</table>
 			</form>
-		</div>
-	</div>
+		
 
 
 </body>

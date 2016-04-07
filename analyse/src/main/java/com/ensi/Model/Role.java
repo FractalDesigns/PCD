@@ -33,7 +33,6 @@ public class Role implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idRole;
 	private String name;
-	private String type;
 	private List<User> users;
 
 	public Role() {
@@ -67,17 +66,12 @@ public class Role implements java.io.Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	public String getType() {
-		return type;
-	}
-	public Role(Integer idRole, String name, String type, List<User> users) {
+	
+	public Role(Integer idRole, String name, List<User> users) {
 		super();
 		this.idRole = idRole;
 		this.name = name;
-		this.type = type;
 		this.users = users;
 	}
-	public void setType(String type) {
-		this.type = type;
-	}
+
 }

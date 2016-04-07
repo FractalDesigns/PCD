@@ -300,25 +300,6 @@ textarea {
     <div class="alert alert-danger" style="bottom:0;left:0;position:relative; height:100px; margin-left :30px; margin-right:30px; text-align:center; ">
                                 le mot de passe ou le login n'est pas correcte veuillez réessayer 
                             </div>
-=======
-  
-  <body>
-<div id="top">
-<p> Accés non autorisé ! </p>
-<p> Veuillez vérifier vos coordonnées </p>
-</div>
-	<div>div added by Sabrine</div>
-	<div id="conteneur">
-		<div id="menu">
 		
-		<ul>
-			<li>
-				<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		        <a href="${logoutUrl}">Log Out</a>
-		    </li>
-		</ul>
-		</div>	   
-		</div>
->>>>>>> 3bf51244371d6d2f0212c85b4608837028236819
     </body>
 </html>

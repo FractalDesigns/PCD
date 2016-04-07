@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Analyse Financière</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -63,42 +63,36 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="home"><i class="fa fa-dashboard fa-fw"></i>Tableau de bord</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            
-                        </li>
-<!--                         make dropdown forms -->
+                       
 
 <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Formulaires<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> Gestion Utilisateurs <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                	<script> function insereractif() {
-                                		$("#form_container").load("insereractif");
-                                		$(".page-header").text("Inserer actif courant");
+                                	<script> function insererUtilisateur() {
+                                		$("#form_container").load("InsertionUtilisateur");
+                                		$(".page-header").text("Inserer Utilisateur");
                                 	}</script>
-                                    <a  onclick ="insereractif()"href="#insereractifcourant">Actif Courant</a>
+                                    <a  onclick ="insererUtilisateur()"href="#insererUtilisateur">Insertion</a>
                                     
                                 </li>
-                                <li><script> function insereractifNC() {
-                                		$("#form_container").load("insereractifNC");
-                                		$(".page-header").text("Inserer actif non courant");
+                                <li><script> function modifierUtilisateur() {
+                                		$("#form_container").load("ModificationUtilisateur");
+                                		$(".page-header").text("Modifier Utilisateur");
                                 	}</script>
-                                    <a onclick ="insereractifNC()" href="#insereractifNC">Actif non Courant</a>
+                                    <a onclick ="modifierUtilisateur()" href="#modifierUtilisateur">Modification</a>
+                                </li>
+                                <li><script> function supprimerUtilisateur() {
+                                		$("#form_container").load("SuppressionUtilisateur");
+                                		$(".page-header").text("Supprimer Utilisateur");
+                                	}</script>
+                                    <a onclick ="supprimerUtilisateur()" href="#supprimerUtilisateur">Suppression</a>
+                                </li>
+                                <li><script> function afficherUtilisateur() {
+                                		$("#form_container").load("AffichUtilisateur");
+                                		$(".page-header").text("Liste des Utilisateurs");
+                                	}</script>
+                                    <a onclick ="afficherUtilisateur()" href="#afficherUtilisateur">Affichage</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -156,5 +150,3 @@
 
 </body> 
  </html>
-
-

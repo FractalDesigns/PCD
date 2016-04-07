@@ -99,9 +99,10 @@ public class ActifCourant implements java.io.Serializable{
 	public void setLiquidites(float liquidites) {
 		this.liquidites = liquidites;
 	}
-	public ActifCourant(int annee,float stocks, float creanceClients, float creanceEtat,
+	public ActifCourant(int id,int annee,float stocks, float creanceClients, float creanceEtat,
 			float creanceDiverses, float placements, float liquidites) {
 		super();
+		this.id=id;
 		this.annee=annee;
 		this.stocks = stocks;
 		this.creanceClients = creanceClients;

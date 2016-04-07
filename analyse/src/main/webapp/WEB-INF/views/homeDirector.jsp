@@ -70,10 +70,31 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                <script> function insertChartSolvabilite() {
+                                		$("#form_container").load("insertChartSolvabilite");
+                                		$(".page-header").text("Evolution de la solvabilité");
+                                	}
+                                </script>
+                                    <a  onclick ="insertChartSolvabilite()"href="#insertChartSolvabilite">Ratios de solvabilite</a>
+                                    
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                <script> function insertChartLiquidite() {
+                                		$("#form_container").load("insertChartLiquidite");
+                                		$(".page-header").text("Evolution de la liquidité");
+                                	}
+                                </script>
+                                    <a  onclick ="insertChartLiquidite()"href="#insertChartLiquidite">Ratios de liquidité</a>
+                                    
+                                </li>
+                                <li>
+                                <script> function insertChartBilan() {
+                                		$("#form_container").load("insertChartBilan");
+                                		$(".page-header").text("Evolution des analyses du bilan financier");
+                                	}
+                                </script>
+                                    <a  onclick ="insertChartBilan()"href="#insertChartBilan">Analyse du bilan</a>
+                                    
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -88,7 +109,7 @@
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                 	<script> function insereractif() {
-                                		$("#form_container").load("insereractif");
+                                		$("#form_container").load("insereractifC");
                                 		$(".page-header").text("Inserer actif courant");
                                 	}</script>
                                     <a  onclick ="insereractif()"href="#insereractifcourant">Actif Courant</a>
@@ -99,6 +120,18 @@
                                 		$(".page-header").text("Inserer actif non courant");
                                 	}</script>
                                     <a onclick ="insereractifNC()" href="#insereractifNC">Actif non Courant</a>
+                                </li>
+                                <li><script> function insererpassifC() {
+                                		$("#form_container").load("insererpassifC");
+                                		$(".page-header").text("Inserer passif courant");
+                                	}</script>
+                                    <a onclick ="insererpassifC()" href="#insererpassifC">Passif Courant</a>
+                                </li>
+                                <li><script> function insererpassifNC() {
+                                		$("#form_container").load("insererpassifNC");
+                                		$(".page-header").text("Inserer passif non courant");
+                                	}</script>
+                                    <a onclick ="insererpassifNC()" href="#insererpassifNC">Passif non Courant</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

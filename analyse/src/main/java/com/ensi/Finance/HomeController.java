@@ -188,13 +188,16 @@ public class HomeController {
 		Collection collectionRole = authentication.getAuthorities();
 
 		if (roles.contains("ROLE_ADMIN")) {
-			return ("home");
+			return ("homeAdministrateur");
 		}
 		if (roles.contains("ROLE_Personel")) {
 			return ("homePersonnel");
 		}
 		if (roles.contains("ROLE_Directeur")) {
 			return ("homeDirector");
+		}
+		if (roles.contains("ROLE_Responsable")) {
+			return ("home");
 		}
 		if (roles == null)
 			return ("Fail");
@@ -210,6 +213,11 @@ public class HomeController {
 	public String homeDirecteur(Model model) {
 		return "homeDirector";
 	}
+	@RequestMapping(value = "/homeAdministrateur")
+	public String homeAdministrateur(Model model) {
+		return "homeAdministrateur";
+	}
+	
 	
 	@RequestMapping(value = "/login")
 	public String userIndex2(Model model) {
@@ -300,7 +308,9 @@ public class HomeController {
 		return model;
 	}
 	
-	@RequestMapping(value="/insereractif" )
+	//------------------------------------------------//
+	
+	@RequestMapping(value="/insereractifC" )
 	public String insererActifCourant(Model model){
 		
 		return "InsertActifC";
@@ -309,6 +319,162 @@ public class HomeController {
 	public String insererActifNonCourant(Model model){
 		return "InsertActifNC";
 	}
+	@RequestMapping(value="/insererpassifC" )
+	public String insererPassifCourant(Model model){
+		return "InsertPassifC";
+	}
+	@RequestMapping(value="/insererpassifNC" )
+	public String insererPassifNonCourant(Model model){
+		return "InsertPassifNC";
+	}
+	
+	@RequestMapping(value="/chartSolvabilite" )
+	public String chartSolvabilite(Model model){
+		return "chartSolvabilite";
+	}
+	@RequestMapping(value="/chartLiquidite" )
+	public String chartLiquidite(Model model){
+		return "chartLiquidite";
+	}
+	@RequestMapping(value="/chartBilan" )
+	public String chartBilan(Model model){
+		return "chartBilan";
+	}
+	
+	
+	//-----------------------Charts-------------------------//
+	
+		@RequestMapping(value = "/insertChartSolvabilite", method ={RequestMethod.POST, RequestMethod.GET})
+		public ModelAndView chartRatiosSolvabilite() {
+		
+			
+			String solvabilite="[";  
+			String annee="[";
+			String autonomie="[";
+			List<AnalyseRatios> listAnalyseRatios = new ArrayList();
+			listAnalyseRatios = ratiosservice.getAllAnalyseRatios();
+			for (int i=0; i<= listAnalyseRatios.size()-1;i++){
+				if (i==0){
+				solvabilite=solvabilite.concat(String.valueOf(listAnalyseRatios.get(i).getSolvabiliteGenerale()));
+				annee=annee.concat(String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+				autonomie=autonomie.concat(String.valueOf(listAnalyseRatios.get(i).getAutonomieDecisionnelle()));
+				}
+				else {
+					solvabilite=solvabilite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getSolvabiliteGenerale()));
+					annee=annee.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+					autonomie=autonomie.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAutonomieDecisionnelle()));
+
+				}
+			}
+			solvabilite=solvabilite.concat(" ]");
+			annee=annee.concat(" ]");
+			autonomie=autonomie.concat(" ]");
+			Map<String, Object> model = new HashMap<String, Object>();
+			 model.put("solvabilite",solvabilite);
+			 model.put("annee",annee);
+			 model.put("autonomie", autonomie);
+			return new ModelAndView("chartSolvabilite",model);
+			}
+
+		
+		
+		
+
+	
+	
+	
+	@RequestMapping(value = "/insertChartLiquidite", method ={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView chartRatiosLiquidite() {
+	
+		
+		String degreLiquidite="[";  
+		String annee="[";
+		String liquiditeGenerale="[";
+		String liquiditeReduite="[";
+		String liquiditeImmediate="[";
+
+		List<AnalyseRatios> listAnalyseRatios = new ArrayList();
+		listAnalyseRatios = ratiosservice.getAllAnalyseRatios();
+		for (int i=0; i<= listAnalyseRatios.size()-1;i++){
+			if (i==0){
+			degreLiquidite=degreLiquidite.concat(String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
+			annee=annee.concat(String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+			liquiditeGenerale=liquiditeGenerale.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
+			liquiditeReduite=liquiditeReduite.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
+			liquiditeImmediate=liquiditeImmediate.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
+
+			}
+			else {
+				degreLiquidite=degreLiquidite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
+				annee=annee.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+				liquiditeGenerale=liquiditeGenerale.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
+				liquiditeReduite=liquiditeReduite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
+				liquiditeImmediate=liquiditeImmediate.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
+
+				
+			}
+		}
+		degreLiquidite=degreLiquidite.concat(" ]");
+		annee=annee.concat(" ]");
+		liquiditeGenerale=liquiditeGenerale.concat(" ]");
+		liquiditeReduite=liquiditeReduite.concat(" ]");
+		liquiditeImmediate=liquiditeImmediate.concat(" ]");
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		 model.put("degreLiquidite",degreLiquidite);
+		 model.put("annee",annee);
+		 model.put("liquiditeGenerale", liquiditeGenerale);
+		 model.put("liquiditeReduite", liquiditeReduite);
+		 model.put("liquiditeImmediate", liquiditeImmediate);
+
+		return new ModelAndView("chartLiquidite",model);
+		}
+
+	
+	@RequestMapping(value = "/insertChartBilan", method ={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView chartBilan() {
+	
+		
+		String fondroulement="[";  
+		String annee="[";
+		String bfr="[";
+		String tn="[";
+
+		List<AnalyseBilan> listAnalyseBilan = new ArrayList();
+		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
+		for (int i=0; i<= listAnalyseBilan.size()-1;i++){
+			if (i==0){
+			fondroulement=fondroulement.concat(String.valueOf(listAnalyseBilan.get(i).getFondroulement()));
+			annee=annee.concat(String.valueOf(listAnalyseBilan.get(i).getAnnee()));
+			bfr=bfr.concat(String.valueOf(listAnalyseBilan.get(i).getBfr()));
+			tn=tn.concat(String.valueOf(listAnalyseBilan.get(i).getTn()));
+
+			}
+			else {
+				fondroulement=fondroulement.concat(" , "+String.valueOf(listAnalyseBilan.get(i).getFondroulement()));
+				annee=annee.concat(" , "+String.valueOf(listAnalyseBilan.get(i).getAnnee()));
+				bfr=bfr.concat(" , "+String.valueOf(listAnalyseBilan.get(i).getBfr()));
+				tn=tn.concat(" , "+String.valueOf(listAnalyseBilan.get(i).getTn()));
+			}
+		}
+		fondroulement=fondroulement.concat(" ]");
+		annee=annee.concat(" ]");
+		bfr=bfr.concat(" ]");
+		tn=tn.concat(" ]");
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		 model.put("fondroulement",fondroulement);
+		 model.put("annee",annee);
+		 model.put("bfr", bfr);
+		 model.put("tn", tn);
+
+		return new ModelAndView("chartBilan",model);
+		}
+
+	
+	
+
+	
 	
 /*------------ Affichage (PNC)---------------*/
 	
@@ -403,11 +569,11 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/ModificationDonnees")
 	public String ModificationDonnees(Model model) {
-		return "ModificationDonnées";
+		return "ModificationDonnees";
 	}
 	@RequestMapping(value = "/SuppressionDonnees")
 	public String SuppressionDonnees(Model model) {
-		return "SuppressionDonnées";
+		return "SuppressionDonnees";
 	}
 	@RequestMapping(value = "/ConsultationDonnees")
 	public String Consultation(Model model) {
@@ -544,14 +710,13 @@ public class HomeController {
 
 		userservice.saveUser(user);
 
-		return new ModelAndView("GestionUtilisateur", model);
+		return new ModelAndView("homePersonnel", model);
 	}
 	
 	/* ----------------------- Insertion Donnees(ANC) -------------------*/
 	
 	@RequestMapping(value = "/insertData", method = { RequestMethod.POST,RequestMethod.GET })
 	public  @ResponseBody ModelAndView insertData(
-			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "annee", required = false) String annee,
 			@RequestParam(value = "immobilisationIncorporelles", required = false) String immobilisationIncorporelles,
 			@RequestParam(value = "immobilisationCorporelles", required = false) String immobilisationCorporelles,
@@ -566,7 +731,7 @@ public class HomeController {
 
 		dataservice.saveActifNonCourant(anc);
 
-		return new ModelAndView("InsertionDonnees", model);
+		return new ModelAndView("homePersonnel", model);
 	}
 	
 	/*------------------- Insertion (AC)---------------*/
@@ -575,6 +740,7 @@ public class HomeController {
 			RequestMethod.GET })
 	public  @ResponseBody ModelAndView insertData2(
 			@RequestParam(value = "id", required = false) String id,
+
 			@RequestParam(value = "annee", required = false) String annee,
 			@RequestParam(value = "stocks", required = false) String stocks,
 			@RequestParam(value = "creanceClients", required = false) String creanceClients,
@@ -597,7 +763,7 @@ public class HomeController {
 
 		data2service.saveActifCourant(ac);
 
-		return new ModelAndView("InsertionDonnees", model);
+		return new ModelAndView("homePersonnel", model);
 	}
 	
 	/*-------------- insertion (PNC)---------------------*/
@@ -632,7 +798,7 @@ public class HomeController {
 
 		data3service.savePassifNonCourant(pnc);
 
-		return new ModelAndView("InsertionDonnees", model);
+		return new ModelAndView("homePersonnel", model);
 	}
 	
 	
@@ -662,7 +828,7 @@ public class HomeController {
 
 		data4service.savePassifCourant(pc);
 
-		return new ModelAndView("InsertionDonnees", model);
+		return new ModelAndView("homePersonnel", model);
 	}
 	
 	
@@ -833,7 +999,7 @@ public class HomeController {
 
 		userservice.updateUser(user);
 
-		return new ModelAndView("GestionUtilisateur", model);
+		return new ModelAndView("homeAdministrateur", model);
 	}
 	/*-------------------Modification données (ANC)-----------*/
 	
@@ -984,7 +1150,7 @@ public class HomeController {
 		user.setLastname(nom);
 		userservice.deleteUser(user);
 
-		return new ModelAndView("GestionUtilisateur", model);
+		return new ModelAndView("homeAdministrateur", model);
 	}
 	
 /* --------------------- Suppression (ANC) -----------------*/

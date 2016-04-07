@@ -2,161 +2,71 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Insertion Des Passifs Non Courants</title>
 </head>
 <style>
-body{
-background:url(resources/images/fond_new.jpg) no-repeat center;
-background-size:1900px,700px;
-font-family:Arial,sans-serif;
-font-size:25px;
-color:	#FF7F50;
-margin: 100px;
-}
-#top{
-text-align:center;
-font-size:30px;
-text-shadow: 5px 5px 5px #FF0000;
-
+button {
+	margin: 3px;
 }
 
-
-#conteneur{
-width:1200px;
-margin:160px 150px 0 150px;
-
-}
-
-#menu ul li{
-list-style:none;
-float:left;
-padding:0;
-
-}
-#menu ul li a{
-height:70px;
-width:150px;
-display:block;
-font-size:18px;
-line-height:43px;
-text-decoration:none;
-color: 	#696969;
-text-align:center;
-}
-#menu ul li a:hover {
-line-height:30px;
-}
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color:#FF7F50 ;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 15px;
-  width: 175px;
-  height:60px;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '»';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
+input {
+	margin: 3px;
 }
 </style>
   
 <body>
-	<div id="top"><p>Application d'Analyse Financière</p>
-	<p>Insertion Des Passifs Non Courants</p> <br><br></div>
 	
-	<div id="conteneur">
-		<div id="menu">
 		<form action="insertData3" method="post">
     
     <table>
     
     <tr>
-    <td> Annee </td> <td> <input type="text" name="annee" style=" background-color: #696969;
-    color: white;height:40px;"> </td><td> </td>
+    <td> Annee </td> <td> <input type="text" name="annee" class="form-control"> </td><td> </td>
     </tr>
     <tr>
-    <td> Capital Social </td><td><input type="text" name="capitalSocial" style=" background-color: #696969;
-    color: white;height:40px;"></td><td> </td>
+    <td> Capital Social </td><td><input type="text" name="capitalSocial" class="form-control"></td><td> </td>
     </tr>
     <tr>
-    <td> Reserves </td> <td> <input type="text" name="reserve" style=" background-color: #696969;
-    color: white;height:40px;"> </td><td> </td>
+    <td> Reserves </td> <td> <input type="text" name="reserve" class="form-control"> </td><td> </td>
     </tr>
     <tr>
-    <td> Autre Capitaux </td><td> <input type="text" name="autreCapitaux" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Autre Capitaux </td><td> <input type="text" name="autreCapitaux" class="form-control"></td><td></td>
     </tr>
     <tr>
-    <td> Resultat Reporte </td><td> <input type="text" name="resultatReporte" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Resultat Reporte </td><td> <input type="text" name="resultatReporte" class="form-control"></td><td></td>
     </tr>
     <tr>
-    <td> Resultat Exercice </td><td> <input type="text" name="resultatExercice" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Resultat Exercice </td><td> <input type="text" name="resultatExercice" class="form-control"></td><td></td>
     </tr>
     
     <tr>
-    <td> Emprunts </td><td> <input type="text" name="emprunts" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Emprunts </td><td> <input type="text" name="emprunts" class="form-control"></td><td></td>
     </tr>
     <tr>
-    <td> Provisions </td><td> <input type="text" name="provisions" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Provisions </td><td> <input type="text" name="provisions" class="form-control"></td><td></td>
     </tr>
     <tr>
-    <td> Autres Passifs Financiers </td><td> <input type="text" name="autresPassifsFinanciers" style=" background-color: #696969;
-    color: white;height:40px;"></td><td></td>
+    <td> Autres Passifs Financiers </td><td> <input type="text" name="autresPassifsFinanciers" class="form-control"></td><td></td>
     </tr>
     <tr>
-    <td> 
-    <button class="button" type="submit" style="vertical-align:middle"><span>Inserer</span></button>
-    
-    </td>
-    
-    <td>
-   <button class="button" type="reset" style="vertical-align:middle"><span>Annuler</span></button>
-    
-    </td>
-    </tr>
+						<td>
+							<button class="btn btn-outline btn-primary btn-lg" type="submit"
+								style="vertical-align: middle">
+								<span>Inserer</span>
+							</button>
+
+						</td>
+
+						<td>
+							<button class="btn btn-outline btn-primary btn-lg" type="reset"
+								style="vertical-align: middle">
+								<span>Vider les champs</span>
+							</button>
+
+						</td>
+					</tr>
     </table>
     </form>
-		<ul>
-				<li><a href="http://localhost:8080/Finance/InsertionDonnees" title="cliquer">Retour</a></li>
 		
-			<li>
-				<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		        <a href="${logoutUrl}">Log Out</a>
-		    </li>
-		</ul>
-		</div>	   
-		</div>
  
 </body>
 </html>
