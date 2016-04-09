@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.tools.JavaFileObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -344,7 +346,7 @@ public class HomeController {
 	
 	//-----------------------Charts-------------------------//
 	
-		@RequestMapping(value = "/insertChartSolvabilite", method ={RequestMethod.POST, RequestMethod.GET})
+		@RequestMapping(value = "/chartSolvabilite", method ={RequestMethod.POST, RequestMethod.GET})
 		public ModelAndView chartRatiosSolvabilite() {
 		
 			
@@ -363,7 +365,6 @@ public class HomeController {
 					solvabilite=solvabilite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getSolvabiliteGenerale()));
 					annee=annee.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAnnee()));
 					autonomie=autonomie.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAutonomieDecisionnelle()));
-
 				}
 			}
 			solvabilite=solvabilite.concat(" ]");
@@ -376,61 +377,57 @@ public class HomeController {
 			return new ModelAndView("chartSolvabilite",model);
 			}
 
-		
-		
-		
+		//fixed 		
+		@RequestMapping(value = "/chartLiquidite", method ={RequestMethod.POST, RequestMethod.GET})
+		public String getchartliquidite(Model model) {
+			System.out.println("calling get chart liquidite");
 
-	
-	
-	
-	@RequestMapping(value = "/insertChartLiquidite", method ={RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView chartRatiosLiquidite() {
-	
-		
-		String degreLiquidite="[";  
-		String annee="[";
-		String liquiditeGenerale="[";
-		String liquiditeReduite="[";
-		String liquiditeImmediate="[";
+			
+			String degreLiquidite="[";  
+			String annee="[";
+			String liquiditeGenerale="[";
+			String liquiditeReduite="[";
+			String liquiditeImmediate="[";
 
-		List<AnalyseRatios> listAnalyseRatios = new ArrayList();
-		listAnalyseRatios = ratiosservice.getAllAnalyseRatios();
-		for (int i=0; i<= listAnalyseRatios.size()-1;i++){
-			if (i==0){
-			degreLiquidite=degreLiquidite.concat(String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
-			annee=annee.concat(String.valueOf(listAnalyseRatios.get(i).getAnnee()));
-			liquiditeGenerale=liquiditeGenerale.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
-			liquiditeReduite=liquiditeReduite.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
-			liquiditeImmediate=liquiditeImmediate.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
+			List<AnalyseRatios> listAnalyseRatios = new ArrayList();
+			listAnalyseRatios = ratiosservice.getAllAnalyseRatios();
+			for (int i=0; i<= listAnalyseRatios.size()-1;i++){
+				if (i==0){
+				degreLiquidite=degreLiquidite.concat(String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
+				annee=annee.concat(String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+				liquiditeGenerale=liquiditeGenerale.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
+				liquiditeReduite=liquiditeReduite.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
+				liquiditeImmediate=liquiditeImmediate.concat(String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
 
+				}
+				else {
+					degreLiquidite=degreLiquidite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
+					annee=annee.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAnnee()));
+					liquiditeGenerale=liquiditeGenerale.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
+					liquiditeReduite=liquiditeReduite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
+					liquiditeImmediate=liquiditeImmediate.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
+				}
 			}
-			else {
-				degreLiquidite=degreLiquidite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getDegreLiquidite()));
-				annee=annee.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getAnnee()));
-				liquiditeGenerale=liquiditeGenerale.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeGenerale()));
-				liquiditeReduite=liquiditeReduite.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeReduite()));
-				liquiditeImmediate=liquiditeImmediate.concat(" , "+String.valueOf(listAnalyseRatios.get(i).getLiquiditeImmediate()));
+			degreLiquidite=degreLiquidite.concat(" ]");
+			annee=annee.concat(" ]");
+			liquiditeGenerale=liquiditeGenerale.concat(" ]");
+			liquiditeReduite=liquiditeReduite.concat(" ]");
+			liquiditeImmediate=liquiditeImmediate.concat(" ]");
+			
+			Map<String, Object> atributes = new HashMap<String, Object>();
 
-				
-			}
+			 atributes.put("degreLiquidite",degreLiquidite);
+			 atributes.put("annee",annee);
+			 atributes.put("liquiditeGenerale", liquiditeGenerale);
+			 atributes.put("liquiditeReduite", liquiditeReduite);
+			 atributes.put("liquiditeImmediate", liquiditeImmediate);
+			 
+			 model.addAllAttributes(atributes);
+			
+			
+		return "chartLiquidite";
 		}
-		degreLiquidite=degreLiquidite.concat(" ]");
-		annee=annee.concat(" ]");
-		liquiditeGenerale=liquiditeGenerale.concat(" ]");
-		liquiditeReduite=liquiditeReduite.concat(" ]");
-		liquiditeImmediate=liquiditeImmediate.concat(" ]");
-
-		Map<String, Object> model = new HashMap<String, Object>();
-		 model.put("degreLiquidite",degreLiquidite);
-		 model.put("annee",annee);
-		 model.put("liquiditeGenerale", liquiditeGenerale);
-		 model.put("liquiditeReduite", liquiditeReduite);
-		 model.put("liquiditeImmediate", liquiditeImmediate);
-
-		return new ModelAndView("chartLiquidite",model);
-		}
-
-	
+		
 	@RequestMapping(value = "/insertChartBilan", method ={RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView chartBilan() {
 	

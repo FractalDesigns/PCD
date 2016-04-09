@@ -1,186 +1,151 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
-<head>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
-<script type="text/javascript">
+<script>
   
-  var chaineDegreLiquidite=eval("${degreLiquidite}");
-  var chaineAnnee=eval("${annee}");
-  var chaineLiquiditeGenerale=eval("${liquiditeGenerale}");
-  var chaineLiquiditeReduite=eval("${liquiditeReduite}");
-  var chaineLiquiditeImmediate=eval("${liquiditeImmediate}");
+  // inutile d'utiliser eval 
+  var chaineDegreLiquidite=${degreLiquidite};
+  var chaineAnnee=${annee}; 
+  var chaineLiquiditeGenerale=${liquiditeGenerale};
+  var chaineLiquiditeReduite=${liquiditeReduite};
+  var chaineLiquiditeImmediate=${liquiditeImmediate};
   
-  $(function () {
-	    $('#container4').highcharts({
-	        chart: {
-	            type: 'column',
-	           
-	            options3d: {
-	                enabled: true,
-	                alpha: 10,
-	                beta: 25,
-	                depth: 70
-	            }
-	        },
-	        title: {
-	            text: 'Liquidite immediate au cours des dernieres annees'
-	        },
-	       
-	        plotOptions: {
-	            column: {
-	                depth: 25
-	            }
-	        },
-	        xAxis: {
-	            categories: chaineAnnee
-	        },
-	        yAxis: {
-	            title: {
-	                text: null
-	            }
-	        },
-	        series: [{
-	            name: 'Liquidite Immediate',
-	            data: chaineLiquiditeImmediate
-	            
-			} ]
-								});
-			});
-  $(function () {
-	    $('#container3').highcharts({
-	        chart: {
-	            type: 'column',
-	           
-	            options3d: {
-	                enabled: true,
-	                alpha: 10,
-	                beta: 25,
-	                depth: 70
-	            }
-	        },
-	        title: {
-	            text: 'Liquidite reduite au cours des dernieres annees'
-	        },
-	       
-	        plotOptions: {
-	            column: {
-	                depth: 25
-	            }
-	        },
-	        xAxis: {
-	            categories: chaineAnnee
-	        },
-	        yAxis: {
-	            title: {
-	                text: null
-	            }
-	        },
-	        series: [{
-	            name: 'Liquidite Reduite',
-	            data: chaineLiquiditeReduite
-	            
-			} ]
-								});
-			});
-  
-  $(function () {
-	    $('#container').highcharts({
-	        chart: {
-	            type: 'column',
-	           
-	            options3d: {
-	                enabled: true,
-	                alpha: 10,
-	                beta: 25,
-	                depth: 70
-	            }
-	        },
-	        title: {
-	            text: 'Degre de liquidite au cours des dernieres annees'
-	        },
-	       
-	        plotOptions: {
-	            column: {
-	                depth: 25
-	            }
-	        },
-	        xAxis: {
-	            categories: chaineAnnee
-	        },
-	        yAxis: {
-	            title: {
-	                text: null
-	            }
-	        },
-	        series: [{
-	            name: 'Degre De Liquidite',
-	            data: chaineDegreLiquidite
-	            
-			} ]
-								});
-			});
-			$(function() {
-				$('#container2').highcharts({
-					chart : {
-						type : 'column',
+//creer les options de chaque chart sous forme JSON 
+  	var liquiditeimmediate = {
+                
+                chart: {
+                    renderTo: 'container-chart4',
+                    type: 'column'
+                },
+                title: {
+                    text: 'Liquidite immediate au cours des dernieres annees'
+                },
+                plotOptions : {
+                	column :{
+                		depth : 25
+                	}
+                },
+                xAxis: {
+                    categories: chaineAnnee
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Liquidite Immediate',
+                    data: chaineLiquiditeImmediate
+                }]
+            };
+    
 
-						options3d : {
-							enabled : true,
-							alpha : 10,
-							beta : 25,
-							depth : 70
-						}
-					},
-					title : {
-						text : 'La liquidite generale au cours des derniéres années'
-					},
 
-					plotOptions : {
-						column : {
-							depth : 25
-						}
-					},
-					xAxis : {
-						categories : chaineAnnee
-					},
-					yAxis : {
-						title : {
-							text : null
-						}
-					},
-					series : [ {
-						name : 'Liquidite Generale',
-						data : chaineLiquiditeGenerale
-					} ]
-				});
-			});
-		</script>
+  	var liquiditereduite = {
+                
+                chart: {
+                    renderTo: 'container-chart3',
+                    type: 'column'
+                },
+                title: {
+                    text: 'Liquidite reduite au cours des dernieres annees'
+                },
+                plotOptions : {
+                	column :{
+                		depth : 25
+                	}
+                },
+                xAxis: {
+                    categories: chaineAnnee
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Liquidite Reduite',
+                    data: chaineLiquiditeReduite
+                }]
+            };
+    
+  
+ 
+	var degreeliquidite = {
+                
+                chart: {
+                    renderTo: 'container-chart2',
+                    type: 'column'
+                },
+                title: {
+                    text: 'Degre de liquidite au cours des dernieres annees'
+                },
+                plotOptions : {
+                	column :{
+                		depth : 25
+                	}
+                },
+                xAxis: {
+                    categories: chaineAnnee
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Degre De Liquidite',
+                    data: chaineDegreLiquidite
+                }]
+            };
+    
 		
-
-  
-  
-
-  
-  
-  </head>
-  
- 
+		var liquiditegenerale = {
+                
+                chart: {
+                    renderTo: 'container-chart1',
+                    type: 'column'
+                },
+                title: {
+                    text: 'La liquidite generale au cours des derniéres années'
+                },
+                plotOptions : {
+                	column :{
+                		depth : 25
+                	}
+                },
+                xAxis: {
+                    categories: chaineAnnee
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Liquidite Generale',
+                    data: chaineLiquiditeGenerale
+                }]
+            };
+    
+    
+            // creer les chart en utilisant les options declaré au dessus 
+            $(document).ready(function(){
+                var chart = new Highcharts.Chart(liquiditegenerale);
+                var chart2 = new Highcharts.Chart(degreeliquidite); 
+                var chart3 = new Highcharts.Chart(liquiditereduite); 
+                var chart4 = new Highcharts.Chart(liquiditeimmediate); 
+            });
+            
+		
+		</script>
   <body>
- 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/highcharts.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/highcharts-3d.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/exporting.js"></script>
+<div id="container-chart1"  style="height: 400px; margin: auto; min-width: 310px; max-width: 600px" class = "row col-lg-6"></div>
+<div id="container-chart2" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px" class = "row col-lg-6"></div>
+<div id="container-chart3" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px" class = "row col-lg-6"></div>
+<div id="container-chart4" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px" class = "row col-lg-6"></div>
 
-<div id="container" style="height: 400px"></div>
-<div id="container2" style="height: 400px"></div>
-<div id="container3" style="height: 400px"></div>
-<div id="container4" style="height: 400px"></div>
-Test
 
     </body>
 </html>

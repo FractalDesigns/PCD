@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Analyse Financière</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,6 +29,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="${pageContext.request.contextPath}/resources/js/highcharts.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/highcharts-3d.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/exporting.js"></script>
 
 </head>
   
@@ -71,7 +75,7 @@
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                 <script> function insertChartSolvabilite() {
-                                		$("#form_container").load("insertChartSolvabilite");
+                                		$("#form_container").load("chartSolvabilite");
                                 		$(".page-header").text("Evolution de la solvabilité");
                                 	}
                                 </script>
@@ -80,11 +84,11 @@
                                 </li>
                                 <li>
                                 <script> function insertChartLiquidite() {
-                                		$("#form_container").load("insertChartLiquidite");
+                                		$("#form_container").load("chartLiquidite");
                                 		$(".page-header").text("Evolution de la liquidité");
                                 	}
                                 </script>
-                                    <a  onclick ="insertChartLiquidite()"href="#insertChartLiquidite">Ratios de liquidité</a>
+                                    <a  onclick ="insertChartLiquidite()"href="#chartLiquidite">Ratios de liquidité</a>
                                     
                                 </li>
                                 <li>
@@ -156,10 +160,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">file d'actualité</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                
                 <!-- /.row -->
                 <div id ="form_container" class='row'></div>
             </div>
