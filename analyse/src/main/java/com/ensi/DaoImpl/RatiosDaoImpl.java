@@ -61,7 +61,7 @@ public class RatiosDaoImpl implements RatiosDao,Serializable{
 						+ annee
 						+"')";
 				
-				em.createQuery("delete from AnalyseRatios").executeUpdate();
+				//em.createQuery("delete from AnalyseRatios").executeUpdate();
 				em.createNativeQuery(query).executeUpdate();
 
 	}

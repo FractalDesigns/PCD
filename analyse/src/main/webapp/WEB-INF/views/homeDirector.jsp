@@ -69,6 +69,17 @@
                         </li>
                         <li>
                             <a href="home"><i class="fa fa-dashboard fa-fw"></i>Tableau de bord</a>
+                         <ul class="nav nav-second-level collapse">
+                                <li>
+                                <script> function insertPieBilan() {
+                                		$("#form_container").load("pieBilan");
+                                		$(".page-header").text("Bilan financier pour cette année");
+                                	}
+                                </script>
+                                    <a  onclick ="insertPieBilan()"href="#insertPieBilan">Bilan Financier</a>
+                                    
+                                </li>
+                          </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -142,7 +153,63 @@
                         </li>
                         
 <!--                         end  of drop down form -->
-                        
+<li>                    <a href="#"><i class="fa fa-edit fa-fw"></i> Bilan Financier<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                            <li>
+                                	<script> function afficheractifcourant() {
+                                		$("#form_container").load("AffichActifCourant");
+                                		$(".page-header").text("Actif courant");
+                                	}</script>
+                                    <a  onclick ="afficheractifcourant()"href="#afficheractifcourant">Actif Courant</a>
+                                    
+                            </li>
+                            <li>
+                                	<script> function afficheractifnoncourant() {
+                                		$("#form_container").load("AffichActifNonCourant");
+                                		$(".page-header").text("Actif non courant");
+                                	}</script>
+                                    <a  onclick ="afficheractifnoncourant()"href="#afficheractifnoncourant">Actif Non Courant</a>
+                                    
+                            </li>
+                            <li>
+                                	<script> function afficherpassifcourant() {
+                                		$("#form_container").load("AffichPassifCourant");
+                                		$(".page-header").text("Passif courant");
+                                	}</script>
+                                    <a  onclick ="afficherpassifcourant()"href="#afficherpassifcourant">Passif Courant</a>
+                                    
+                            </li>
+                            <li>
+                                	<script> function afficherpassifnoncourant() {
+                                		$("#form_container").load("AffichPassifNonCourant");
+                                		$(".page-header").text("Passif non courant");
+                                	}</script>
+                                    <a  onclick ="afficherpassifnoncourant()"href="#afficherpassifnoncourant">Passif Non Courant</a>
+                                    
+                            </li>
+                            
+                                
+                                </ul>
+                                </li>
+<li>                    <a href="#"><i class="fa fa-edit fa-fw"></i> Analyses <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                            <li>
+                                	<script> function analyseBilan() {
+                                		$("#form_container").load("ConsultationAnalyseBilan");
+                                		$(".page-header").text("Analyse du bilan financier");
+                                	}</script>
+                                    <a  onclick ="analyseBilan()"href="#analyseBilan">Bilan</a>
+                                    
+                            </li>
+                            <li>
+                                	<script> function analyseEtatEntreprise() {
+                                		$("#form_container").load("ConsultationEtatEntreprise");
+                                		$(".page-header").text("Analyse des ratios");
+                                	}</script>
+                                    <a  onclick ="analyseEtatEntreprise()"href="#analyseEtatEntreprise">Etat de l'entreprise</a>
+                                    
+                            </li>                                   
+                            
                        <li>
                        <c:url value="/j_spring_security_logout" var="logoutUrl" />
                         <a href="${logoutUrl}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>

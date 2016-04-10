@@ -53,7 +53,7 @@ public class BilanDaoImpl implements BilanDao,Serializable {
 	public void insertIntoAnalyseBilan(int annee) {
 
 String query="insert into analysebilan "
-		+ "(id,annee,fondroulement,bfre,bfrhe,bfr,tn)"
+		+ "(id,annee,fondroulement,bfre,bfrhe,bfr,tn,sac,spc)"
 		+ "(select distinct ((select count(*) from analysebilan)+1) as id "
 		+ ", t_actif.annee as annee,"
 		+ "((t_actif.stock+t_actif.placements+t_actif.liquidites+t_actif.creanceclients+t_actif.creanceetat+t_actif.creancediverses)"
@@ -64,14 +64,16 @@ String query="insert into analysebilan "
 		+ " (t_actif.stock+t_actif.creanceclients)-(t_passif.dettefiscales+t_passif.dettefournisseurs)"
 		+ " +(t_actif.creanceclients+t_actif.creanceetat+t_actif.placements)-"
 		+ "(t_passif.dettesalaries+t_passif.diversepassifcourant)as bfr,"
-		+ "(t_actif.liquidites)-(t_passif.concourbancaire) as tn"
+		+ "(t_actif.liquidites)-(t_passif.concourbancaire) as tn,"
+		+ "(t_actif.stock+t_actif.placements+t_actif.liquidites+t_actif.creanceclients+t_actif.creanceetat+t_actif.creancediverses) as sac,"
+		+ "(t_passif.dettesalaries+t_passif.dettefournisseurs+t_passif.dettefiscales+t_passif.diversepassifcourant) as spc"
 		+ " from actifcourant t_actif,passifcourant t_passif  where  t_actif.annee"
 		+ " ='"
 		+ annee
 		+ "' and  t_passif.annee='"
 		+ annee
 		+ "')";
-em.createQuery("delete from AnalyseBilan").executeUpdate();
+//em.createQuery("delete from AnalyseBilan").executeUpdate();
 em.createNativeQuery(query).executeUpdate();
 	} 
 	

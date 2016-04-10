@@ -342,6 +342,10 @@ public class HomeController {
 	public String chartBilan(Model model){
 		return "chartBilan";
 	}
+	@RequestMapping(value="/pieBilan" )
+	public String pieBilan(Model model){
+		return "pieBilan";
+	}
 	
 	
 	//-----------------------Charts-------------------------//
@@ -436,6 +440,8 @@ public class HomeController {
 		String annee="[";
 		String bfr="[";
 		String tn="[";
+	
+
 
 		List<AnalyseBilan> listAnalyseBilan = new ArrayList();
 		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
@@ -454,6 +460,8 @@ public class HomeController {
 				tn=tn.concat(" , "+String.valueOf(listAnalyseBilan.get(i).getTn()));
 			}
 		}
+		
+	
 		fondroulement=fondroulement.concat(" ]");
 		annee=annee.concat(" ]");
 		bfr=bfr.concat(" ]");
@@ -464,12 +472,44 @@ public class HomeController {
 		 model.put("annee",annee);
 		 model.put("bfr", bfr);
 		 model.put("tn", tn);
-
+		
 		return new ModelAndView("chartBilan",model);
 		}
 
 	
 	
+//------------------------(PieBilan)-----------//
+	
+	
+	@RequestMapping(value = "/insertPieBilan", method ={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView PieBilan() {
+	
+		
+		
+		String sac="['Actif Courant',";
+		String spc="['Passif Courant',";
+
+
+		List<AnalyseBilan> listAnalyseBilan = new ArrayList();
+		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
+		
+		double somme=listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()+listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc();
+		
+		sac=sac.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()*100/somme));				
+		spc=spc.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc()*100/somme));
+
+		sac=sac.concat(" ]");
+		spc=spc.concat(" ]");
+
+		
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		 model.put("sac", sac);
+		 model.put("spc", spc);
+
+		return new ModelAndView("pieBilan",model);
+		}
 
 	
 	
