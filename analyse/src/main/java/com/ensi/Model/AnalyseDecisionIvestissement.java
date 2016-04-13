@@ -12,20 +12,13 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
     private double tauxActualisation;
-    
     private DonneesDecision dd=new DonneesDecision();
     private AnalyseEffetDeLevier el=new AnalyseEffetDeLevier();
     private ActifNonCourant anc=new ActifNonCourant();
-	
-
 	public AnalyseDecisionIvestissement() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-    
+		// TODO  Auto-generated constructor stub
+	}    
     @Id
     public int getId() {
 		return id;
@@ -33,7 +26,6 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 	@Column(name="tauxActualisation")
 	public double getTauxActualisation() {
 		return tauxActualisation;
@@ -41,8 +33,6 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
 	public void setTauxActualisation(double tauxActualisation) {
 		this.tauxActualisation = tauxActualisation;
 	}
-
-	
     //public double calculInvestissementInitial(){
     //	investissementInitial=anc.sommeActifNonCourant()+accroissementBFRE;
     //	return investissementInitial;
@@ -53,7 +43,6 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
     public double calculCashFlowNet(int periode){
     	return calculCashFlowBrut(periode)-el.beneficeAvantImpot()*dd.getTauxImpositionBenefice();
     }
-    
     public double calculVAN(){
     	double som=0;
     			for(int i=0;i<dd.getDuree();i++){
