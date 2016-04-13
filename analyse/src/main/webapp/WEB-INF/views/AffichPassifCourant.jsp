@@ -2,67 +2,13 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Affichage Des Passifs Courants</title>
 </head>
-<style>
-body{
-background:url(resources/images/fond_new.jpg) no-repeat center;
-background-size:1900px,700px;
-font-family:Arial,sans-serif;
-font-size:25px;
-color:	#FF7F50;
-margin: 100px;
-}
-#top{
-text-align:center;
-font-size:30px;
-text-shadow: 5px 5px 5px #FF0000;
 
-}
-#down{
-text-align:bottom;
-font-size:20px;
-}
-
-#conteneur{
-width:1200px;
-margin:160px 0 0 0;
-
-}
-
-#menu ul li{
-list-style:none;
-float:left;
-padding:0;
-
-}
-#menu ul li a{
-height:70px;
-width:150px;
-display:block;
-font-size:18px;
-line-height:43px;
-text-decoration:none;
-color: 	#696969;
-text-align:center;
-}
-#menu ul li a:hover {
-line-height:30px;
-}
-</style>
-  
   <body>
-<div id="top">
-				<p>Application d'Analyse Financiere</p>
-                <p>Affichage Des Passifs Courants</p> 
-</div>	
-	<div id="conteneur">
-		<div id="menu">
+
 		
 		
-		<div>
-		<table>
-		<tr><td>
+	
 		<table>
     <tr>
         <th style="color:#696969;height:80px;">Annee</th>
@@ -105,21 +51,6 @@ line-height:30px;
     </c:forEach>
     </table>
     
-    <td>
-    <ul style="color:#BA55D3;">
-    <li>
-     <a href="http://localhost:8080/Finance/Bilan" title="cliquer">Retour</a>
-    </li>
-		<li>
-				<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		        <a href="${logoutUrl}">Log Out</a>
-		</li>
-		</ul>
-	</td></tr>
-
-</table>
-		</div>		
-		</div>	   
-		</div>
+    
     </body>
 </html>

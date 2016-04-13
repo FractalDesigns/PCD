@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.swing.event.AncestorEvent;
 
 @Entity
 @Table(name="AnalyseBilan")
@@ -19,11 +20,12 @@ public class AnalyseBilan implements java.io.Serializable{
 	private double bfrhe;
 	private double bfr;
 	private double tn;
+	
 	private ActifCourant ac=new ActifCourant();
 	private PassifCourant pc=new PassifCourant();
 
-
-    
+	private double sac=ac.sommeActifCourant();
+	private double spc=pc.sommePassifCourant();
 	
 	public double calculFR(){
 		fondroulement=ac.sommeActifCourant()-pc.sommePassifCourant();
@@ -118,6 +120,18 @@ public class AnalyseBilan implements java.io.Serializable{
 	}
 	public AnalyseBilan() {
 		super();
+	}
+	public double getSac() {
+		return sac;
+	}
+	public void setSac(double sac) {
+		this.sac = sac;
+	}
+	public double getSpc() {
+		return spc;
+	}
+	public void setSpc(double spc) {
+		this.spc = spc;
 	}
 	
 }
