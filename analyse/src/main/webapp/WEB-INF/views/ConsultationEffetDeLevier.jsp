@@ -2,62 +2,10 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Consultation De l'Effet De Levier</title>
 </head>
-<style>
-body{
-background:url(resources/images/fond_new.jpg) no-repeat center;
-background-size:1900px,700px;
-font-family:Arial,sans-serif;
-font-size:25px;
-color:	#FF7F50;
-margin: 100px;
-}
-#top{
-text-align:center;
-font-size:30px;
-text-shadow: 5px 5px 5px #FF0000;
 
-}
-
-
-#conteneur{
-width:1200px;
-margin:160px 0 0 0;
-
-}
-
-#menu ul li{
-list-style:none;
-float:left;
-padding:0;
-
-}
-#menu ul li a{
-height:70px;
-width:150px;
-display:block;
-font-size:18px;
-line-height:43px;
-text-decoration:none;
-color: 	#696969;
-text-align:center;
-}
-#menu ul li a:hover {
-line-height:30px;
-}
-</style>
   <body>
-<div id="top">
-				<p>Application d'Analyse Financière</p>
-                <p>Consultation De l'Effet De Levier</p> 
-</div>	
-	<div id="conteneur">
-		<div id="menu">
-		
-		
-		<table>
-		<tr><td>
+
 		<table>
     <tr>
         <th style="color:#696969">Annee</th>  
@@ -133,22 +81,8 @@ line-height:30px;
     </tr>
     </c:forEach>
     </table>
-    </td></tr>
-    <tr>
-    <td>
-    <ul>
-    <li style="width:80%;"> 
-    <a href="http://localhost:8080/Finance/CashFlow" title="cliquer">Retour</a>
-    </li>
-		<li style="width:20%;">
-				<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		        <a href="${logoutUrl}">Log Out</a>
-		</li>
-		</ul>
-	</td></tr>
+    
 
-</table>
-		</div>	   
-		</div>
+
     </body>
 </html>

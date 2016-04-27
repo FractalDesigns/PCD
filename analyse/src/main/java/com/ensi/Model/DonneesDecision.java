@@ -15,8 +15,14 @@ public class DonneesDecision implements java.io.Serializable {
     private int annee;
     private int duree;
     private double investissementInitial;
-    private double depencesDecaisses;
-    private double tauxImpositionBenefice;
+    private double ebe;
+    private double dotations;
+    private double reprises;
+    private double tauxActualisation;
+    private double prixDeVente;
+    private double vnc;//valeur comptable nette
+    private double impot;//impot sur le plus value
+
     
     
     
@@ -55,21 +61,84 @@ public class DonneesDecision implements java.io.Serializable {
 	public void setInvestissementInitial(double investissementInitial) {
 		this.investissementInitial = investissementInitial;
 	}
+
+	@Column(name = "ebe")
+	public double getEbe() {
+		return ebe;
+	}
+	public void setEbe(double ebe) {
+		this.ebe = ebe;
+	}
 	
-	@Column(name = "depencesDecaisses")
-	public double getDepencesDecaisses() {
-		return depencesDecaisses;
+	@Column(name = "dotations")
+	public double getDotations() {
+		return dotations;
 	}
-	public void setDepencesDecaisses(double depencesDecaisses) {
-		this.depencesDecaisses = depencesDecaisses;
+	public void setDotations(double dotations) {
+		this.dotations = dotations;
 	}
 	
-	@Column(name = "tauxImpositionBenefice")
-	public double getTauxImpositionBenefice() {
-		return tauxImpositionBenefice;
+	@Column(name = "reprises")
+	public double getReprises() {
+		return reprises;
 	}
-	public void setTauxImpositionBenefice(double tauxImpositionBenefice) {
-		this.tauxImpositionBenefice = tauxImpositionBenefice;
+	public void setReprises(double reprises) {
+		this.reprises = reprises;
 	}
+	
+	@Column(name = "tauxActualisation")
+	public double getTauxActualisation() {
+		return tauxActualisation;
+	}
+	public void setTauxActualisation(double tauxActualisation) {
+		this.tauxActualisation = tauxActualisation;
+	}
+	
+	@Column(name = "prixDeVente")
+	public double getPrixDeVente() {
+		return prixDeVente;
+	}
+	public void setPrixDeVente(double prixDeVente) {
+		this.prixDeVente = prixDeVente;
+	}
+	
+	@Column(name = "vnc")
+	public double getVnc() {
+		return vnc;
+	}
+	public void setVnc(double vnc) {
+		this.vnc = vnc;
+	}
+	
+	@Column(name = "impot")
+	public double getImpot() {
+		return impot;
+	}
+	public void setImpot(double impot) {
+		this.impot = impot;
+	}
+	
+	public DonneesDecision() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public DonneesDecision(int id, int annee, int duree,
+			double investissementInitial, double ebe, double dotations,
+			double reprises, double tauxActualisation, double prixDeVente,
+			double vnc, double impot) {
+		super();
+		this.id = id;
+		this.annee = annee;
+		this.duree = duree;
+		this.investissementInitial = investissementInitial;
+		this.ebe = ebe;
+		this.dotations = dotations;
+		this.reprises = reprises;
+		this.tauxActualisation = tauxActualisation;
+		this.prixDeVente = prixDeVente;
+		this.vnc = vnc;
+		this.impot = impot;
+	}
+	
 
 }

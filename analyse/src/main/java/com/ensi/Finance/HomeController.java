@@ -199,11 +199,11 @@ public class HomeController {
 			return ("homeDirector");
 		}
 		if (roles.contains("ROLE_Responsable")) {
-			return ("home");
+			return ("homeResponsable");
 		}
 		if (roles == null)
 			return ("Fail");
-		return "home";
+		return "homeResponsable";
 	}
 	
 
@@ -219,6 +219,10 @@ public class HomeController {
 	public String homeAdministrateur(Model model) {
 		return "homeAdministrateur";
 	}
+	@RequestMapping(value = "/homeResponsable")
+	public String homeResponsable(Model model) {
+		return "homeResponsable";
+	}
 	
 	
 	@RequestMapping(value = "/login")
@@ -228,42 +232,42 @@ public class HomeController {
 
 	/*--------------------------------*/
 	
-	@RequestMapping(value = "/GestionDonnees")
-	public String GestionDonnees(Model model) {
-		return "GestionDonnees";
-	}
-	@RequestMapping(value = "/GestionAnalyses")
-	public String GestionAnalyse(Model model) {
-		return "GestionAnalyse";
-	}
-	
-	@RequestMapping(value = "/GestionUtilisateurs")
-	public String GestionUtilisateur(Model model) {
-		return "GestionUtilisateur";
-	}
-	
-	@RequestMapping(value = "/GestionRapports")
-	public String GestionRapport(Model model) {
-		return "GestionRapport";
-	}
+//	@RequestMapping(value = "/GestionDonnees")
+//	public String GestionDonnees(Model model) {
+//		return "GestionDonnees";
+//	}
+//	@RequestMapping(value = "/GestionAnalyses")
+//	public String GestionAnalyse(Model model) {
+//		return "GestionAnalyse";
+//	}
+//	
+//	@RequestMapping(value = "/GestionUtilisateurs")
+//	public String GestionUtilisateur(Model model) {
+//		return "GestionUtilisateur";
+//	}
+//	
+//	@RequestMapping(value = "/GestionRapports")
+//	public String GestionRapport(Model model) {
+//		return "GestionRapport";
+//	}
 	
 /* -------------------------------  */
-	@RequestMapping(value = "/Ratios")
-	public String GestionRatios(Model model) {
-		return "GestionRatios";
-	}
-	@RequestMapping(value = "/EffetDeLevier")
-	public String EffetDeLevier(Model model) {
-		return "EffetDeLevier";
-	}
-	@RequestMapping(value = "/Decisions")
-	public String GestionDecision(Model model) {
-		return "GestionDecision";
-	}
-	@RequestMapping(value = "/Tri")
-	public String TriProjets(Model model) {
-		return "TriProjets";
-	}
+//	@RequestMapping(value = "/Ratios")
+//	public String GestionRatios(Model model) {
+//		return "GestionRatios";
+//	}
+//	@RequestMapping(value = "/EffetDeLevier")
+//	public String EffetDeLevier(Model model) {
+//		return "EffetDeLevier";
+//	}
+//	@RequestMapping(value = "/Decisions")
+//	public String GestionDecision(Model model) {
+//		return "GestionDecision";
+//	}
+//	@RequestMapping(value = "/Tri")
+//	public String TriProjets(Model model) {
+//		return "TriProjets";
+//	}
 	
 	/*-------------------Affichage(user)----------------*/
 	
@@ -329,6 +333,30 @@ public class HomeController {
 	public String insererPassifNonCourant(Model model){
 		return "InsertPassifNC";
 	}
+	@RequestMapping(value="/insererDonneesEffetDeLevier" )
+	public String insererDonneesEffetDeLevier(Model model){
+		return "InsertionDonneesEffetDelevier";
+	}
+	@RequestMapping(value="/insererProjet" )
+	public String insererProjet(Model model){
+		return "InsertionProjet";
+	}
+	
+	@RequestMapping(value="/choixAnnee" )
+	public String choixAnnee(Model model){
+		return "choixAnnee";
+	}
+	@RequestMapping(value="/choixAnnee2" )
+	public String choixAnnee2(Model model){
+		return "choixAnnee2";
+	}
+	@RequestMapping(value="/choixAnnee3" )
+	public String choixAnnee3(Model model){
+		return "choixAnnee3";
+	}
+	
+	
+	//----------------------------------------------//
 	
 	@RequestMapping(value="/chartSolvabilite" )
 	public String chartSolvabilite(Model model){
@@ -345,6 +373,10 @@ public class HomeController {
 	@RequestMapping(value="/pieBilan" )
 	public String pieBilan(Model model){
 		return "pieBilan";
+	}
+	@RequestMapping(value="/pieBFR" )
+	public String pieBFR(Model model){
+		return "pieBFR";
 	}
 	
 	
@@ -476,8 +508,32 @@ public class HomeController {
 		return new ModelAndView("chartBilan",model);
 		}
 
+//------------------------(Pie BFR)-------------//
+	@RequestMapping(value = "/insertPieBFR", method ={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView PieBFR() {
 	
+		String bfre="['besoin en fond de roulement d exploitation',";
+		String bfrhe="['besoin en fond de roulement hors exploitation',";
 	
+		List<AnalyseBilan> listAnalyseBilan= new ArrayList();
+		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
+		
+		bfre=bfre.concat(String.valueOf(listAnalyseBilan
+				.get(listAnalyseBilan.size()-1).getBfre()/listAnalyseBilan
+				.get(listAnalyseBilan.size()-1).getBfr()));				
+		bfrhe=bfrhe.concat(String.valueOf(listAnalyseBilan
+				.get(listAnalyseBilan.size()-1).getBfrhe()/listAnalyseBilan
+				.get(listAnalyseBilan.size()-1).getBfr()));				
+			
+		bfre=bfre.concat(" ]");
+		bfrhe=bfrhe.concat(" ]");
+		String compositionBFR="["+bfre+","+bfrhe+"]";
+		Map<String, Object> model = new HashMap<String, Object>();
+
+		model.put("compositionBFR", compositionBFR);
+		return new ModelAndView("pieBFR",model);
+	}
+
 //------------------------(PieBilan)-----------//
 	
 	
@@ -486,27 +542,151 @@ public class HomeController {
 	
 		
 		
-		String sac="['Actif Courant',";
-		String spc="['Passif Courant',";
-
-
-		List<AnalyseBilan> listAnalyseBilan = new ArrayList();
-		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
+		String stocks="['Stocks',";
+		String creanceClients="['Creances clients',";
+		String creanceEtat="['Creances Etat',";
+		String creanceDiverses="['Creances Diverses',";
+		String placements="['placements',";
+		String liquidites="['liquidites',";
 		
-		double somme=listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()+listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc();
+		String immIncorporelles="['Immobilisations Incorporelles',";
+		String immCorporelles="['Immobilisations Corporelles',";
+		String immFinancieres="['Immobilisations Financieres',";
+
+		String detteFournisseurs="['Dettes Fournisseurs',";
+		String detteFiscales="['Dettes Fiscales',";
+		String detteSalaries="['Dettes Salaries',";
+		String diversePassifCourant="['Diverse Passif Courant',";
+		String concourBancaire="['Concour Bancaire',";
 		
-		sac=sac.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()*100/somme));				
-		spc=spc.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc()*100/somme));
-
-		sac=sac.concat(" ]");
-		spc=spc.concat(" ]");
-
+		String passifNonCourant="['Passif Non Courant',";
+		String capitalPropre="['Capital Propre',";
 		
+		List<ActifCourant> listActifCourant = new ArrayList();
+		listActifCourant = data2service.getAllActifCourant();
+		List<ActifNonCourant> listActifNonCourant= new ArrayList();
+		listActifNonCourant = dataservice.getAllActifNonCourant();
+		List<PassifCourant> listPassifCourant= new ArrayList();
+		listPassifCourant = data4service.getAllPassifCourant();
+		List<PassifNonCourant> listPassifNonCourant= new ArrayList();
+		listPassifNonCourant = data3service.getAllPassifNonCourant();
+		
+		stocks=stocks.concat(String.valueOf(listActifCourant
+			.get(listActifCourant.size()-1).getStocks()/listActifCourant
+			.get(listActifCourant.size()-1).sommeActifCourant()));				
+		creanceClients=creanceClients.concat(String.valueOf(listActifCourant
+				.get(listActifCourant.size()-1).getCreanceClients()/listActifCourant
+				.get(listActifCourant.size()-1).sommeActifCourant()));
+		creanceEtat=creanceEtat.concat(String.valueOf(listActifCourant
+				.get(listActifCourant.size()-1).getCreanceEtat()/listActifCourant
+				.get(listActifCourant.size()-1).sommeActifCourant()));
+		creanceDiverses=creanceDiverses.concat(String.valueOf(listActifCourant
+				.get(listActifCourant.size()-1).getCreanceDiverses()/listActifCourant
+				.get(listActifCourant.size()-1).sommeActifCourant()));
+		placements=placements.concat(String.valueOf(listActifCourant
+				.get(listActifCourant.size()-1).getPlacements()/listActifCourant
+				.get(listActifCourant.size()-1).sommeActifCourant()));
+		liquidites=liquidites.concat(String.valueOf(listActifCourant
+				.get(listActifCourant.size()-1).getLiquidites()/listActifCourant
+				.get(listActifCourant.size()-1).sommeActifCourant()));
+		
+		
+		immIncorporelles=immIncorporelles.concat(String.valueOf(listActifNonCourant
+				.get(listActifNonCourant.size()-1).getImmIncorporelles()/listActifNonCourant
+				.get(listActifNonCourant.size()-1).sommeActifNonCourant()));
+		immCorporelles=immCorporelles.concat(String.valueOf(listActifNonCourant
+				.get(listActifNonCourant.size()-1).getImmCorporelles()/listActifNonCourant
+				.get(listActifNonCourant.size()-1).sommeActifNonCourant()));
+		immFinancieres=immFinancieres.concat(String.valueOf(listActifNonCourant
+				.get(listActifNonCourant.size()-1).getImmFinancieres()/listActifNonCourant
+				.get(listActifNonCourant.size()-1).sommeActifNonCourant()));
+		
+		detteFournisseurs=detteFournisseurs.concat(String.valueOf(listPassifCourant
+				.get(listPassifCourant.size()-1).getDetteFournisseurs()/listPassifCourant
+				.get(listPassifCourant.size()-1).sommePassifCourant()));
+		detteFiscales=detteFiscales.concat(String.valueOf(listPassifCourant
+				.get(listPassifCourant.size()-1).getDetteFiscales()/listPassifCourant
+				.get(listPassifCourant.size()-1).sommePassifCourant()));
+		detteSalaries=detteSalaries.concat(String.valueOf(listPassifCourant
+				.get(listPassifCourant.size()-1).getDetteSalaries()/listPassifCourant
+				.get(listPassifCourant.size()-1).sommePassifCourant()));
+		diversePassifCourant=diversePassifCourant.concat(String.valueOf(listPassifCourant
+				.get(listPassifCourant.size()-1).getDiversePassifCourant()/listPassifCourant
+				.get(listPassifCourant.size()-1).sommePassifCourant()));
+		concourBancaire=concourBancaire.concat(String.valueOf(listPassifCourant
+				.get(listPassifCourant.size()-1).getConcourBancaire()/listPassifCourant
+				.get(listPassifCourant.size()-1).sommePassifCourant()));
+		
+		passifNonCourant=passifNonCourant.concat(String.valueOf(listPassifNonCourant
+				.get(listPassifNonCourant.size()-1).sommePassifNonCourant()/listPassifNonCourant
+				.get(listPassifNonCourant.size()-1).sommeCapitalPermanent()));
+		capitalPropre=capitalPropre.concat(String.valueOf(listPassifNonCourant
+				.get(listPassifNonCourant.size()-1).sommeCapitalPropre()/listPassifNonCourant
+				.get(listPassifNonCourant.size()-1).sommeCapitalPermanent()));
+		
+		stocks=stocks.concat(" ]");
+		creanceClients=creanceClients.concat(" ]");
+		creanceEtat=creanceEtat.concat(" ]");
+		creanceDiverses=creanceDiverses.concat(" ]");
+		placements=placements.concat(" ]");
+		liquidites=liquidites.concat(" ]");
+		
+		immIncorporelles=immIncorporelles.concat(" ]");
+		immCorporelles=immCorporelles.concat(" ]");
+		immFinancieres=immFinancieres.concat(" ]");
 
+		 detteFournisseurs=detteFournisseurs.concat("]");
+		 detteFiscales=detteFiscales.concat("]");
+		 detteSalaries=detteSalaries.concat("]");
+		 diversePassifCourant=diversePassifCourant.concat("]");
+		 concourBancaire=concourBancaire.concat("]");
+		
+		String compositionActifNonCourant="["+immIncorporelles
+				+","+immCorporelles+","+immFinancieres+"]";
+		
+		String compositionActifCourant="["+stocks+","+creanceClients+","+creanceEtat
+				+","+creanceDiverses+","+placements+","+liquidites+"]";
+		
+		String compositionPassifCourant="["+detteFournisseurs+","+detteFiscales+","+detteSalaries
+				+","+diversePassifCourant+","+concourBancaire+"]";
+		
+		String compositionPassifNonCourant="["+passifNonCourant+","+capitalPropre+"]";
+		
+		
 		Map<String, Object> model = new HashMap<String, Object>();
-		
-		 model.put("sac", sac);
-		 model.put("spc", spc);
+
+		model.put("stocks", stocks);
+		model.put("creanceClients", creanceClients);
+		model.put("creanceEtat", creanceEtat);
+		model.put("creanceDiverses", creanceDiverses);
+		model.put("placements", placements);
+		model.put("liquidites", liquidites);
+		model.put("compositionActifCourant", compositionActifCourant);
+		model.put("compositionActifNonCourant", compositionActifNonCourant);
+		model.put("compositionPassifCourant", compositionPassifCourant);
+		model.put("compositionPassifNonCourant", compositionPassifNonCourant);
+
+
+//		String sac="['Actif Courant',";
+//		String spc="['Passif Courant',";
+//
+//		List<AnalyseBilan> listAnalyseBilan = new ArrayList();
+//		listAnalyseBilan = bilanservice.getAllAnalyseBilan();
+//		
+//		double somme=listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()+listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc();
+//		
+//		sac=sac.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSac()*100/somme));				
+//		spc=spc.concat(String.valueOf(listAnalyseBilan.get(listAnalyseBilan.size()-1).getSpc()*100/somme));
+//
+//		sac=sac.concat(" ]");
+//		spc=spc.concat(" ]");
+//
+//		
+//
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		
+//		 model.put("sac", sac);
+//		 model.put("spc", spc);
 
 		return new ModelAndView("pieBilan",model);
 		}
@@ -747,7 +927,7 @@ public class HomeController {
 
 		userservice.saveUser(user);
 
-		return new ModelAndView("homePersonnel", model);
+		return new ModelAndView("homeAdministrateur", model);
 	}
 	
 	/* ----------------------- Insertion Donnees(ANC) -------------------*/
@@ -768,7 +948,7 @@ public class HomeController {
 
 		dataservice.saveActifNonCourant(anc);
 
-		return new ModelAndView("homePersonnel", model);
+		return new ModelAndView("homeDirector", model);
 	}
 	
 	/*------------------- Insertion (AC)---------------*/
@@ -786,21 +966,24 @@ public class HomeController {
 			@RequestParam(value = "liquidites", required = false) String liquidites,
 
 			@RequestParam(value = "creanceEtat", required = false) String creanceEtat) {
-
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		ActifCourant ac = new ActifCourant();
-
+		try{
 		ac.setAnnee(Integer.valueOf(annee));
 		ac.setStocks(Float.parseFloat(stocks)); 
 		ac.setCreanceClients(Float.parseFloat(creanceClients));
 		ac.setCreanceEtat(Float.parseFloat(creanceEtat));
-		ac.setCreanceEtat(Float.parseFloat(creanceDiverses));
-		ac.setCreanceEtat(Float.parseFloat(placements));
-		ac.setCreanceEtat(Float.parseFloat(liquidites));
-
+		ac.setCreanceDiverses(Float.parseFloat(creanceDiverses));
+		ac.setPlacements(Float.parseFloat(placements));
+		ac.setLiquidites(Float.parseFloat(liquidites));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		data2service.saveActifCourant(ac);
 
-		return new ModelAndView("homePersonnel", model);
+		return new ModelAndView("homeDirector", model);
 	}
 	
 	/*-------------- insertion (PNC)---------------------*/
@@ -835,7 +1018,7 @@ public class HomeController {
 
 		data3service.savePassifNonCourant(pnc);
 
-		return new ModelAndView("homePersonnel", model);
+		return new ModelAndView("homeDirector", model);
 	}
 	
 	
@@ -865,7 +1048,7 @@ public class HomeController {
 
 		data4service.savePassifCourant(pc);
 
-		return new ModelAndView("homePersonnel", model);
+		return new ModelAndView("homeDirector", model);
 	}
 	
 	
@@ -902,7 +1085,7 @@ public class HomeController {
 
 		data5service.saveEffetDeLevier(del);
 
-		return new ModelAndView("InsertionDonnees", model);
+		return new ModelAndView("homeDirector", model);
 	}
 	
 	
@@ -970,18 +1153,24 @@ public class HomeController {
 	
 	
 	
-/*-----------------------Insertion (choix4)------------------*/
+/*-----------------------Insertion (Projet)------------------*/
 	
 	
-	@RequestMapping(value = "/insert_choice4", method = { RequestMethod.POST,
+	@RequestMapping(value = "/insertDataProject", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public  @ResponseBody ModelAndView insert_choice4(
 			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "annee", required = false) String annee,
 			@RequestParam(value = "duree", required = false) String duree,
 			@RequestParam(value = "investissementInitial", required = false) String investissementInitial,
-			@RequestParam(value = "depencesDecaisses", required = false) String depencesDecaisses,
-			@RequestParam(value = "tauxImpositionBenefice", required = false) String tauxImpositionBenefice
+			@RequestParam(value = "dotations", required = false) String dotations,
+			@RequestParam(value = "reprises", required = false) String reprises,
+			@RequestParam(value = "ebe", required = false) String ebe,
+			@RequestParam(value = "tauxActualisation", required = false) String tauxActualisation,
+			@RequestParam(value = "prixDeVente", required = false) String prixDeVente,
+			@RequestParam(value = "vnc", required = false) String vnc,
+			@RequestParam(value = "impot", required = false) String impot
+
 
 			){
 
@@ -991,23 +1180,28 @@ public class HomeController {
 		dd.setAnnee(Integer.valueOf(annee));
 		dd.setDuree(Integer.valueOf(duree)); 
 		dd.setInvestissementInitial(Float.parseFloat(investissementInitial)); 
-		
-		dd.setDepencesDecaisses(Float.parseFloat(depencesDecaisses));
-		dd.setTauxImpositionBenefice(Float.parseFloat(tauxImpositionBenefice));
+		dd.setDotations(Float.parseFloat(dotations)); 
+		dd.setReprises(Float.parseFloat(reprises)); 
+		dd.setEbe(Float.parseFloat(ebe)); 
+		dd.setTauxActualisation(Float.parseFloat(tauxActualisation)); 
+		dd.setPrixDeVente(Float.parseFloat(prixDeVente)); 
+		dd.setVnc(Float.parseFloat(vnc)); 
+		dd.setImpot(Float.parseFloat(impot)); 
 
+		
 
 		data6service.saveDonneesDecision(dd);
 
-		//return new ModelAndView("ConsultationAnalyseDecisionnelle", model);
+		return new ModelAndView("homeDirector", model);
 		
 		
-		decisionservice.insertIntoAnalyseDecisionIvestissement(Integer.valueOf(duree));
-		
-		ModelAndView model2 = new ModelAndView("ConsultationAnalyseDecisionnelle");
-		List<AnalyseDecisionIvestissement> listAnalyseDecisionInvestissement = new ArrayList();
-		listAnalyseDecisionInvestissement=decisionservice.getAllAnalyseDecisionIvestissement();
-		model2.addObject("listAnalyseDecisionInvestissement", listAnalyseDecisionInvestissement);
-		return model2;		
+//		decisionservice.insertIntoAnalyseDecisionIvestissement(Integer.valueOf(duree));
+//		
+//		ModelAndView model2 = new ModelAndView("ConsultationAnalyseDecisionnelle");
+//		List<AnalyseDecisionIvestissement> listAnalyseDecisionInvestissement = new ArrayList();
+//		listAnalyseDecisionInvestissement=decisionservice.getAllAnalyseDecisionIvestissement();
+//		model2.addObject("listAnalyseDecisionInvestissement", listAnalyseDecisionInvestissement);
+//		return model2;		
 		
 	}
 	
@@ -1087,9 +1281,9 @@ public class HomeController {
 		ac.setStocks(Float.parseFloat(stocks)); 
 		ac.setCreanceClients(Float.parseFloat(creanceClients));
 		ac.setCreanceEtat(Float.parseFloat(creanceEtat));
-		ac.setCreanceEtat(Float.parseFloat(creanceDiverses));
-		ac.setCreanceEtat(Float.parseFloat(placements));
-		ac.setCreanceEtat(Float.parseFloat(liquidites));
+		ac.setCreanceDiverses(Float.parseFloat(creanceDiverses));
+		ac.setPlacements(Float.parseFloat(placements));
+		ac.setLiquidites(Float.parseFloat(liquidites));
 
 		data2service.updateActifCourant(ac);
 
@@ -1205,7 +1399,7 @@ public class HomeController {
 		
 		dataservice.deleteActifNonCourant(anc);
 
-		return new ModelAndView("GestionDonnées", model);
+		return new ModelAndView("GestionDonnees", model);
 	}
 
 	
@@ -1224,7 +1418,7 @@ public class HomeController {
 		
 		data2service.deleteActifCourant(ac);
 
-		return new ModelAndView("GestionDonnées", model);
+		return new ModelAndView("GestionDonnees", model);
 	}
 	
 /* --------------------- Suppression (PNC) -----------------*/
@@ -1242,7 +1436,7 @@ public class HomeController {
 		
 		data3service.deletePassifNonCourant(pnc);
 
-		return new ModelAndView("GestionDonnées", model);
+		return new ModelAndView("GestionDonnees", model);
 	}
 	
 	
@@ -1261,7 +1455,7 @@ public class HomeController {
 		
 		data4service.deletePassifCourant(pc);
 
-		return new ModelAndView("GestionDonnées", model);
+		return new ModelAndView("GestionDonnees", model);
 	}
 
 }

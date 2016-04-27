@@ -56,7 +56,7 @@ input {
 					</tr>
 					<tr>
 						<td>Liquidité et equivalent liquidité</td>
-						<td><input type="text" name="liquidités" class="form-control"></td>
+						<td><input type="text" name="liquidites" class="form-control"></td>
 						<td></td>
 					</tr>
 					<tr>

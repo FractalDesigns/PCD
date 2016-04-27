@@ -94,12 +94,23 @@
                                 	}</script>
                                     <a onclick ="insererpassifNC()" href="#insererpassifNC">Passif non Courant</a>
                                 </li>
+                                <li><script> function insererDonneesEffetDeLevier() {
+                                		$("#form_container").load("insererDonneesEffetDeLevier");
+                                		$(".page-header").text("Inserer donnees effet de levier");
+                                	}</script>
+                                    <a onclick ="insererDonneesEffetDeLevier()" href="#insererDonneesEffetDeLevier">Effet De Levier</a>
+                                </li>
+                                <li><script> function insererProjet() {
+                                		$("#form_container").load("insererProjet");
+                                		$(".page-header").text("Inserer donnees effet de levier");
+                                	}</script>
+                                    <a onclick ="insererProjet()" href="#insererProjet">Projet</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         
-<!--                         end  of drop down form -->
-                              
+<!--                         end  of drop down form -->  
                        <li>
                        <c:url value="/j_spring_security_logout" var="logoutUrl" />
                         <a href="${logoutUrl}"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
@@ -117,7 +128,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">file d'actualité</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

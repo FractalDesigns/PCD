@@ -88,7 +88,7 @@ String query="insert into analyseeffetdelevier(id,annee,beneficeavantinteretetim
 		+ "' and t_pnc.annee='"
 		+ annee
 		+ "')";
-				em.createQuery("delete from AnalyseEffetDeLevier").executeUpdate();
+				//em.createQuery("delete from AnalyseEffetDeLevier").executeUpdate();
 				em.createNativeQuery(query).executeUpdate();
 	} 
 	

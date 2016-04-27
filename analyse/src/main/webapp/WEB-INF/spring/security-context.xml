@@ -11,7 +11,7 @@
  <security:http auto-config="true"  use-expressions="true">
         <security:intercept-url pattern="/index" access="permitAll" />
       
-          <security:intercept-url pattern="/home" access="hasAnyRole('ROLE_ADMIN','ROLE_Directeur','ROLE_Personel','ROLE_Responsable')"/>
+          <security:intercept-url pattern="/home" access="hasAnyRole('ROLE_ADMIN','ROLE_Directeur','ROLE_Personel','Role_Responsable')"/>
            
           
         <security:form-login login-page="/" default-target-url="/home"
