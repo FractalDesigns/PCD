@@ -1,0 +1,252 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+
+\begin{center}
+
+\large
+\textbf{Ministère de l'enseignement supérieur de la recherche et de la technologie}\\
+
+\textbf{Université de la Manouba}\\
+
+\textbf{Ecole Nationale des Sciences de l’Informatique}\\
+
+\includegraphics[scale=0.75]{logo.png}\\
+
+\large
+\textbf{Sujet}\\
+
+\textbf{Analyse Financière}\\
+
+\textbf{Rapport de Projet Réalisé par} \\  
+
+\normalsize                       
+Amouri Lobna\\
+El Afrit Achref\\
+Sayari Sabrine\\
+\large
+\textbf{Encadré par}\\
+
+Mme. Houda Guermezi\\
+
+\normalsize
+Année Universitaire 2015/2016\\
+\end{center}
+\newpage
+\Huge
+\textbf{Remerciements}\\
+
+\normalsize
+
+C'est  avec un grand  plaisir  que nous réservons  ces lignes en signe de gratitude  et de reconnaissance à tous ceux qui ont contribué
+de près ou de loin à l'élaboration de ce travail. Avec notre enthousiasme le plus vif et le plus sincère que nous voudrions rendre mérite
+à tous ceux qui à  leur manière nous ont aidé  à mener à bien notre projet.\\
+
+Nous adressons tout d'abord nos plus grands sentiments d'estime à Madame Houda Guermezi , pour avoir accepter de nous diriger patiemment,
+pour son soutien constant et pour sa présence et sa disponibilité tout au long de ce semestre. Sa patience, ses conseils et ses compétences
+n'ont fait que nous promulguer pour que nous menions à bien cette application.\\
+
+Nos remerciements s'adressent aussi à tous nos enseignants pour la qualité de l'enseignement qu'ils nous ont prodigué durant nos études.\\
+
+Enfin, nous ne nous permettons pas d'oublier de remercier nos familles, pour leur soutien à la fois moral et matériel.\\
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction Générale}
+
+\normalsize
+De nos jours nous ne cessons d’évoluer et de toucher efficacement différents domaines. Ce progrès vient contrer le phénomène de blocage du processus normal d'amélioration et d'expansion de l'entreprise dû à une organisation traditionnelle. En effet, l'informatisation de l'entreprise a permis à celle-ci de subir une véritable métamorphose tout en profitant de multiples avantages.\\
+\par
+Mais, confrontés à une masse énorme et diversifiée de données, les systèmes d'informations qui représentent depuis de nombreuses années la référence en matière de stockage de l'information ne répondent plus aux besoins des décideurs.\\
+\par 
+La qualité de l'information et la rapidité de son acquisition augmente l'efficacité des prises de décisions et par la suite le développement rapide de l'entreprise. L'adoption  de nouvelles technologies sur lesquelles reposent les systèmes d'information est désormais inévitable  surtout avec la concurrence ascendante  sur le marché.\\
+\par
+Dans  ce sens, l'informatique d’analyse financière permet  aux  entreprises  une  meilleure homogénéité des données et y ajoute  de l'intelligence afin de rendre les décisions plus adéquates.  Ceci permet  à l'entreprise  d'être  plus réactive  et évolutive pour mieux répondre aux attentes des clients.\\
+\par
+Ainsi, la recherche de la technologie la plus simple et la plus efficace se poursuit. Pour satisfaire ces besoins, plusieurs approches ont été mises en évidence. L'évolution des langages de programmation a amené à  une nouvelle approche aidant à  la conceptualisation des problèmes en informatique. J2EE est un exemple de technologie orienté objet permettant de distribuer une application.\\
+\par
+Ce rapport est organisé comme suit :\\
+\begin{itemize}
+
+\item Le premier chapitre  présente  l'organisme  d'accueil  et le sujet à traiter.
+\item Le second chapitre  consiste en une étude théorique  qui introduit quelques notions de base dont la maîtrise  est indispensable  pour le déroulement  de ce projet.  De plus une brève présentation de l'étude  de l'existant.
+\item Le troisième  chapitre  présente  tout  d'abord  une  analyse  des besoins, ensuite  la formalisation de la spécification  du projet. Ceci permet de procéder à la représentation de l'interaction de l'utilisateur avec le système.
+\item Le quatrième  chapitre  englobe toute  la partie  conception.
+\item Le dernier  chapitre  traite  tous  les détails  de la réalisation : les outils  de travail, les différentes étapes de la réalisation  du système ainsi que quelques captures  d'écran illustrant les fonctionnalités.
+\end{itemize}
+\newpage
+\section{Cadre de notre projet}
+
+\subsection{Problématique}
+
+Avec le développement de l’activité actuel qui ne cesse de croitre, le système de gestion de l’information au sein d’une entreprise ne couvre pas le besoin des responsables et des managers. Ainsi le contrôle fournit avec retard des informations exhaustives. Il doit être complété donc par des outils rapides, sélectifs, ouverts aux données physiques.\\
+Le besoin analytique est traité d'une manière manuelle et non précise. Ce contexte de travail pénalise la réactivité de l'entreprise dans la prise de décision et dans ses choix stratégiques.\\
+A cet effet, nous souhaitons  intégrer une solution à ce problème dans son nouveau système d'information en mode Web.
+
+\subsection{Objectif}
+
+Un système d'information a pour objectif d'améliorer les processus de gestion, de maîtriser les aspects financiers de l'entreprise dont l'objectif final est d'anticiper les besoins futurs. Le besoin de collecter, de traiter et de diffuser des informations de l'entreprise, le besoin de coordination croissant des activités au sein et entre les entreprises sont les nouvelles sources de l'avantage concurrentiel. C'est au système d'information de prendre en charge ces besoins grâce aux nouvelles technologies de l'information qui peuvent accélérer les flux d'information, supprimer des tâches sans valeur ajoutée et renforcer la fiabilité et la qualité des processus. Toutefois, parmi ces nouvelles technologies l'analyse des données.
+
+\subsection{Présentation Du Projet}
+
+Notre mission consiste à intégrer une solution d'intelligence métier suivant le besoin de l'entreprise. La solution permettra de faire l’analyse des données, de faire tous les calculs nécessaires et générer les courbes et les schémas représentant les résultats que le responsable de l’entreprise veut consulter afin de mettre en œuvre les meilleures décisions, ainsi la meilleure stratégie d'investissement. Permettant d’avoir des rapports jugés utiles pour la prise de décision. Cette application visera l'amélioration et la modernisation des fonctions de report, d'analyse de données et de suivi.
+
+\subsection{Conclusion}
+
+Ce chapitre constitue une partie introductive dans laquelle une présentation des organismes d'accueil a été élaborée en premier lieu. En second lieu, une présentation des grandes lignes du sujet a été établie. Compte tenu de cette présentation, une étude de l'état de l'art est indispensable afin de définir les grands axes à développer puis d'extraire les principales fonctionnalités à satisfaire.
+
+\newpage
+\section{Etat De L'Art}
+
+Dans ce chapitre nous présentons l'état de l'art relatif à l'application « Analyse financière». Dans un premier lieu, nous allons introduire une base de données liée au département financier et puis nous allons réaliser un site web lié à ce département permettant ainsi de faciliter la gestion des données au sein de l’entreprise. Dans un deuxième temps, nous définissons l’architecture du Framework utilisée et le choix de l’architecture convenable  pour développer en J2EE. Nous consacrerons cette partie à une présentation des moyens de l’analyse financière ainsi que d'autres concepts directement reliés.
+
+\subsection{Informations Et Données}
+Les données sont des faits qui n'ont pas encore été traités et dont on ne peut, à ce stade, tirer aucun enseignement.  \\
+Les informations sont des données traitées ou transformées qui aident quelqu'un à prendre une décision ou à tirer des conclusions. Les informations peuvent être utilisées pour prendre une décision concernant le suivi ou le provisionnement du prêt en question.\\
+Une information est quelque chose de beaucoup plus qu'un donnée brute. C'est une donnée qui a un sens, et ce sens vient d'un certain modèle d'interprétation. Une même donnée peut avoir plusieurs sens selon le modèle d'interprétation qui lui est associé.\\
+Information = Donnée + Modèle d'interprétation.
+
+\subsection{Le Processus De L'Analyse Financière}
+Une analyse est le résultat d'un processus comportant le calcul de plusieurs facteurs en vue d'atteindre un résultat bien clair, consultable et qui aide le responsable à la prise des décisions.\\
+ Les étapes qui constituent le processus d’analyse financière sont les suivantes :\\
+ \begin{itemize}
+ 
+\item Rassembler les faits et les données dans un bilan.
+\item Faire l’analyse des ratios.
+\item Faire l’analyse de l’effet de levier.
+\item Faire l’analyse de la décision d’investissement.
+\item Evaluer et interpréter les informations trouvées ainsi que les courbes et les schémas des différentes résultats pertinentes.
+\item Etablir plusieurs solutions et figurer la meilleure d’entre elles.
+\item Prendre une décision primaire.
+\item Transférer la décision d’investissement à la direction.
+\item Prendre une décision finale.
+
+ \end{itemize}
+
+\subsection{Le Bilan Financier}
+
+	\subsubsection{Définition}
+Un bilan financier est une photographie de la situation financière d’une entreprise à un instant donné. 
+Il se compose de deux colonnes :\\
+\begin{itemize}
+\item L’ACTIF (qui montre la destination des fonds): ce que l'entreprise a investit ou avancé à des tiers. \\
+\item Le PASSIF (qui retrace l'origine des fonds): comment elle l'a financé. \\
+\end{itemize}
+
+	\subsubsection{Présentation et composition d’un bilan financier}
+Les postes de l’actif sont présentés en ordre de liquide : \\
+       \begin{itemize}     
+        \item L’actif immobilisé (les outils de travail de l’entreprise destinés à être conservés). \\
+        \item L’actif circulant (stock, créances et trésorerie).\\
+       \end{itemize} 
+\par Les postes de l’actif dans l’ordre, on trouvera donc en descendant : \\
+	\begin{itemize}
+\item \textbf{Les Immobilisations} \\
+		 Les immobilisations incorporelles (brevets, licences, fond de commerce, ...). \\
+         Les immobilisations corporelles (constructions, équipements, matériels, mobilier, ...). \\
+         Les immobilisations financières (dépôts de garantie, prêts, titres non négociables...). \\
+\item \textbf{Les Stocks} \\
+		 Les matières premières et les produits semi-ouvrés. \\
+         Les  marchandises.\\
+         Les produits finis et les encours de productions.\\ 
+         Les emballages non consignés (s'ils ne sont pas repris en immobilisation).\\ 
+\item \textbf{Les Créances} \\
+		 Les créances sur les clients.\\ 
+         Les créances sur l'État (remboursement de TVA). \\
+         Les créances diverses. \\
+
+\item \textbf{La Trésorerie}\\
+	 	Les valeurs mobilières de placement. \\
+        Les disponibilités (comptes courants bancaires).\\	
+	\end{itemize}
+\par Les postes du passif sont présentés par ordre de stabilité : \\
+\begin{itemize}
+\item Les fonds propres qui sont d’une stabilité parfaite puisqu’il s’agit du capital social et des réserves non distribuées. 
+\item Les dettes financières à long et moyen terme (la part à court terme étant fréquemment reclassée en bas de bilan) dont les échéances sont de plus connues dans le temps. 
+ \item Les dettes d’exploitation qui sont des dettes à court terme. 
+\end{itemize}
+\par 
+Les postes du passif : Présentés eux aussi en descendant du plus stable vers le moins stable selon trois catégories.
+\begin{itemize}
+\item \textbf{Les fonds propres }\\
+     Le capital social.\\
+     Les réserves diverses (légale, disponible, … ).\\
+     Les résultats (bénéfices ou pertes) non distribués des années précédentes.\\
+     Le résultat net comptable de l’exercice (avant distribution). \\
+\item \textbf{Les dettes financières}\\
+	 Les dettes à long et moyen terme (emprunts à plus d’un an). \\
+     Les dettes à court terme (crédits de caisses, emprunts à moins d’un an …).\\
+\item \textbf{Le passif circulant}\\
+ Les dettes « super privilégiés » (les salariés et les organismes sociaux).\\
+    Les dettes « privilégiés » (principalement fiscales). \\
+    Les dettes « chirographaires » (principalement des fournisseurs). \\
+\textbf{Note} : les termes « super privilégiés » et « privilégiés » signifient que ces créanciers seront payés en priorité en cas de faillite. Les « chirographaires » n’ont pas cette chance et seront payés après tout les autres … pour autant qu’il reste quelques euros …\\
+\end{itemize}
+	\subsubsection{Le fond de roulement (FR)}
+La notion de FR fait référence au cycle d'investissement de l'entreprise. Les dépenses d'investissement réalisées ne sont pas immédiatement couvertes par les recettes liées à ces investissements. Il y a donc un décalage dans le temps, que l'entreprise a besoin de financer. \\
+Le FR permet à l'entreprise de s'assurer que ses investissements sont bien couverts par les capitaux nécessaires. Le FR représente donc l'excédent des ressources stables (capitaux stables) sur les emplois stables (Actif immobilisé).
+
+	\subsubsection{Le Besoin en fond de roulement (BFR)}
+	Le BFR représente le besoin de financement de l'entreprise généré par son activité courante. Il est lié au cycle d'exploitation qui présente des décalages entre les dépenses d'exploitation et les recettes. Bien avant les encaissements, l'entreprise doit financer son cycle d'exploitation (stocks, frais de production, etc). \\
+Le BFR tient compte : \\
+\begin{itemize}
+\item De la longueur du cycle d'exploitation. 
+\item Du stockage des marchandises achetées. 
+\item De la durée du crédit consenti aux clients. 
+\item De la durée des crédits accordés par les fournisseurs. 
+\end{itemize}
+Il se calcule grâce à la formule suivante : \\
+\textbf{  BFR = actif circulant - dettes d'exploitation  \( hors concours bancaires \).} 
+
+	\subsubsection{Présentation du bilan fonctionnel}
+	Le bilan est dit fonctionnel parce que les postes y sont classés suivants leur fonction dans l'entreprise. On y distingue :\\
+	\par \textbf{La fonction d'investissement}\\
+	Elle regroupe les actifs non courants qui sont composés des actifs immobilisés des autres actifs non courants. Les actifs immobilisés concernent les immobilisations incorporelles, corporelles et financières en valeurs brutes et dont les échéances sont à plus d'un an. Quant aux autres actifs non courants, ils regroupent les frais préliminaires, les charges à répartir, les frais d'émission et primes de remboursement des emprunts et les écarts de conversions. 
+	\par \textbf{La fonction de financement}\\
+	Elle concerne les postes de capitaux propres, des passifs non courant (emprunts, autres passifs financiers et provisions pour risques et charges) dont les échéances sont à plus d'un an ainsi que les amortissements et provisions pour dépréciation.
+	\par \textbf{La fonction d'exploitation }\\
+	Au sens large, elle est composée des postes suivants : \\
+	\begin{itemize}
+	\item Aux actifs:
+	\begin{itemize}
+	\item  Les actifs courants d'exploitation : stocks, clients et comptes rattachés et autres actifs courants d'exploitations.
+	\item Les actifs courants hors exploitation : créances diverses, placements et autres actifs financiers et le compte de régularisation d'actifs.
+	\item Les postes de liquidités et équivalents de liquidités sont les suivants : banque, caisse et éventuellement les placements à court terme très liquides (facilement convertibles en un montant connu de liquidité et non soumis à un risque significatif de changement de valeur, exemple : bons de trésor, valeurs à l'encaissement).
+	\end{itemize}
+	\item Aux passifs:
+	\begin{itemize}
+	\item  Les passifs courants d'exploitation : fournisseurs et comptes rattachés (sauf fournisseurs d'immobilisations), dettes fiscales et sociales.
+	\item  Les passifs courants hors exploitation : comptes de régularisation, dettes sur immobilisation, dettes fiscales relatives à l'impôt sur les bénéfices.
+	\item Les concours bancaires courants et autres passifs financiers.
+	\end{itemize}
+	\end{itemize}
+\subsection{L'Analyse Des Ratios}
+	\subsubsection{Analyse des ratios de liquidité}
+	Les formules des ratios de liquidité sont les suivantes : \\
+	\begin{itemize}
+\item Le degré de liquidité: \textbf{Actifs courants / Total des actifs.}\\
+$\Rightarrow$	Mesure le pourcentage de la liquidité.
+\item Le ratio de la liquidité générale: \textbf{Les actifs courants / Les passifs courants.}\\
+$\Rightarrow$	Il est aussi appelé ratio du fonds de roulement. Plus ce ratio est élevé et plus l'entreprise pourra faire face à ses engagements à court terme. La valeur doit se rapprocher de 2. Néanmoins, cette valeur varie en fonction du secteur d'activité et de la taille de l'entreprise.
+
+\item Le ratio de la liquidité réduite: \textbf{Actifs courants (hors stock) / Passifs courants.}\\
+$\Rightarrow $ Si la valeur de ce ratio affiche 74 \%, cela veut dire que l'entreprise ne peut rembourser que 74 \% de la totalité de ses dettes à court terme en mobilisant la totalité de ses créances et de ses liquidités et équivalents de liquidités. La valeur doit se rapprocher de 1,5.
+\item Le ratio de la liquidité : \textbf{immédiate Liquidités et équivalents / Passifs courants.}\\
+$ \Rightarrow $Mesure la capacité de paiement immédiat de l'entreprise.
+	\end{itemize}
+	\subsubsection{Analyse des ratios de solvabilité}
+	\begin{itemize}
+	\item Ratio de solvabilité générale: \textbf{Actifs réels totaux / Passifs totaux.} \\
+$\Rightarrow$ Ce ratio doit être nettement supérieur à 1. Si sa valeur est égale à 2 cela montre que l’entreprise dispose d’une capacité d’endettement importante.
+	\item Ratio de l'autonomie financière ou ratio d'autonomie décisionnelle : \textbf{Passifs non courants / Capitaux propres}.\\
+$\Rightarrow$ Il doit inférieure ou égale à 1.
+	\end{itemize}
+	
+	
+\end{document}

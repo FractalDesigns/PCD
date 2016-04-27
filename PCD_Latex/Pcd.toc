@@ -1,0 +1,19 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Introduction G\IeC {\'e}n\IeC {\'e}rale}{4}
+\contentsline {section}{\numberline {2}Cadre de notre projet}{6}
+\contentsline {subsection}{\numberline {2.1}Probl\IeC {\'e}matique}{6}
+\contentsline {subsection}{\numberline {2.2}Objectif}{6}
+\contentsline {subsection}{\numberline {2.3}Pr\IeC {\'e}sentation Du Projet}{6}
+\contentsline {subsection}{\numberline {2.4}Conclusion}{7}
+\contentsline {section}{\numberline {3}Etat De L'Art}{8}
+\contentsline {subsection}{\numberline {3.1}Informations Et Donn\IeC {\'e}es}{8}
+\contentsline {subsection}{\numberline {3.2}Le Processus De L'Analyse Financi\IeC {\`e}re}{8}
+\contentsline {subsection}{\numberline {3.3}Le Bilan Financier}{9}
+\contentsline {subsubsection}{\numberline {3.3.1}D\IeC {\'e}finition}{9}
+\contentsline {subsubsection}{\numberline {3.3.2}Pr\IeC {\'e}sentation et composition d\IeC {\textquoteright }un bilan financier}{9}
+\contentsline {subsubsection}{\numberline {3.3.3}Le fond de roulement (FR)}{11}
+\contentsline {subsubsection}{\numberline {3.3.4}Le Besoin en fond de roulement (BFR)}{11}
+\contentsline {subsubsection}{\numberline {3.3.5}Pr\IeC {\'e}sentation du bilan fonctionnel}{12}
+\contentsline {subsection}{\numberline {3.4}L'Analyse Des Ratios}{13}
+\contentsline {subsubsection}{\numberline {3.4.1}Analyse des ratios de liquidit\IeC {\'e}}{13}
+\contentsline {subsubsection}{\numberline {3.4.2}Analyse des ratios de solvabilit\IeC {\'e}}{14}

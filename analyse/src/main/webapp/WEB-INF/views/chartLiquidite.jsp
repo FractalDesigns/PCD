@@ -13,10 +13,24 @@
   
 //creer les options de chaque chart sous forme JSON 
   	var liquiditeimmediate = {
-                
                 chart: {
                     renderTo: 'container-chart4',
-                    type: 'column'
+                    type: 'column',
+                    events: {
+                        load: function () {
+
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            // execute anonymous function each 1000 ms 
+                            setInterval(function () {
+                            		// boolean argument tells the setData method to redraw chart each time the data is set 
+									series.setData(liquiditeimmediate.series[0].data,true);
+                            }, 1000); 
+                        }
+                    },
+                    animation: {
+                        duration:1000
+                    }
                 },
                 title: {
                     text: 'Liquidite immediate au cours des dernieres annees'
@@ -39,14 +53,25 @@
                     data: chaineLiquiditeImmediate
                 }]
             };
-    
-
-
   	var liquiditereduite = {
-                
                 chart: {
                     renderTo: 'container-chart3',
-                    type: 'column'
+                    type: 'column',
+                    events: {
+                        load: function () {
+
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            // execute anonymous function each 1000 ms 
+                            setInterval(function () {
+                            		// boolean argument tells the setData method to redraw chart each time the data is set 
+									series.setData(liquiditereduite.series[0].data,true);
+                            }, 1000); 
+                        }
+                    },
+                    animation: {
+                        duration:1000
+                    }
                 },
                 title: {
                     text: 'Liquidite reduite au cours des dernieres annees'
@@ -69,14 +94,25 @@
                     data: chaineLiquiditeReduite
                 }]
             };
-    
-  
- 
-	var degreeliquidite = {
-                
+	var degreeliquidite = { 
                 chart: {
                     renderTo: 'container-chart2',
-                    type: 'column'
+                    type: 'column',
+                    events: {
+                        load: function () {
+
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            // execute anonymous function each 1000 ms 
+                            setInterval(function () {
+                            		// boolean argument tells the setData method to redraw chart each time the data is set 
+									series.setData(degreeliquidite.series[0].data,true);
+                            }, 1000); 
+                        }
+                    },
+                    animation: {
+                        duration:1000
+                    }
                 },
                 title: {
                     text: 'Degre de liquidite au cours des dernieres annees'
@@ -99,13 +135,27 @@
                     data: chaineDegreLiquidite
                 }]
             };
-    
-		
 		var liquiditegenerale = {
                 
                 chart: {
                     renderTo: 'container-chart1',
-                    type: 'column'
+                    type: 'column',
+                    events: {
+                        load: function () {
+
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            // execute anonymous function each 1000 ms 
+                            setInterval(function () {
+                            		// boolean argument tells the setData method to redraw chart each time the data is set 
+									series.setData(liquiditegenerale.series[0].data,true);
+                            }, 1000); 
+                        }
+                    },
+                    animation: {
+                        duration:1000
+                    }
+                    
                 },
                 title: {
                     text: 'La liquidite generale au cours des derniéres années'
@@ -128,17 +178,45 @@
                     data: chaineLiquiditeGenerale
                 }]
             };
-    
-    
             // creer les chart en utilisant les options declaré au dessus 
             $(document).ready(function(){
-                var chart = new Highcharts.Chart(liquiditegenerale);
-                var chart2 = new Highcharts.Chart(degreeliquidite); 
-                var chart3 = new Highcharts.Chart(liquiditereduite); 
-                var chart4 = new Highcharts.Chart(liquiditeimmediate); 
+                 var chart = new Highcharts.Chart(liquiditegenerale);
+                 var chart2 = new Highcharts.Chart(degreeliquidite); 
+                 var chart3 = new Highcharts.Chart(liquiditereduite); 
+                 var chart4 = new Highcharts.Chart(liquiditeimmediate); 
+                 rafraichirDonnees();
+               
+            
             });
             
-		
+            // enabling real time charts :
+            	
+            	
+            	var sourceDeDonnee = 'chartLiquidite';
+            	 function rafraichirDonnees() {
+                     $.ajax({
+                         url: sourceDeDonnee,
+                         success: function() {
+                        	 
+                        	 //ligne de code pour simuler le changement de données dans la base 
+                        	 liquiditegenerale.series[0].data = [Math.random()*10,Math.random()*10,Math.random()*10]; // aprés les teste mettre = chaineLiquiditeGenerale
+                        	 //console.log(liquiditegenerale.series[0].data ); // javascript debugging line
+                        	
+                        	 degreeliquidite.series[0].data = [Math.random()*10,Math.random()*10,Math.random()*10];  //chaineDegreLiquidite
+                        	 liquiditereduite.series[0].data =  [Math.random()*10,Math.random()*10,Math.random()*10] //chaineLiquiditeReduite
+                        	 liquiditeimmediate.series[0].data = [Math.random()*10,Math.random()*10,Math.random()*10]; //chaineLiquiditeImmediate
+                        	 
+                        	 
+                             // rafraichir aprés une seconde 
+                             setTimeout(rafraichirDonnees, 1000);    
+
+                         },
+                         // désactiver le cache pour rafraichir a partir de la base 
+                         cache: false
+                     });
+                 }
+
+                 
 		</script>
 		</head>
   <body>
