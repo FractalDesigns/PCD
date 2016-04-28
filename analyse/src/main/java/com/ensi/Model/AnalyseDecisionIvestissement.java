@@ -11,7 +11,6 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private int id;
-<<<<<<< HEAD
     private double resultatExploitation;
     private double resultatNet;
     private double cashFlowRecurrent;
@@ -75,24 +74,12 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
 		this.van2 = van2;
 	}
 	@Id
-=======
-    private double tauxActualisation;
-    private DonneesDecision dd=new DonneesDecision();
-    private AnalyseEffetDeLevier el=new AnalyseEffetDeLevier();
-    private ActifNonCourant anc=new ActifNonCourant();
-	public AnalyseDecisionIvestissement() {
-		super();
-		// TODO  Auto-generated constructor stub
-	}    
-    @Id
->>>>>>> e5b32b3b6975a191391d1a6504a569a6926afc1c
     public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-<<<<<<< HEAD
 	
 	
 	
@@ -106,21 +93,7 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
     public double resultatExploitation(){
     	 resultatExploitation=dd.getEbe()-dd.getDotations();
     	 return resultatExploitation;
-=======
-	@Column(name="tauxActualisation")
-	public double getTauxActualisation() {
-		return tauxActualisation;
-	}
-	public void setTauxActualisation(double tauxActualisation) {
-		this.tauxActualisation = tauxActualisation;
-	}
-    //public double calculInvestissementInitial(){
-    //	investissementInitial=anc.sommeActifNonCourant()+accroissementBFRE;
-    //	return investissementInitial;
-    //}
-    public double calculCashFlowBrut(int periode){
-    	return el.beneficeAvanInteretEtImpot()-dd.getDepencesDecaisses();
->>>>>>> e5b32b3b6975a191391d1a6504a569a6926afc1c
+
     }
     public double resultatNet(){
     	resultatNet=resultatExploitation()-dd.getReprises();
@@ -132,27 +105,25 @@ public class AnalyseDecisionIvestissement implements java.io.Serializable{
     	cashFlowRecurrent=resultatNet()+dd.getDotations();
     	return cashFlowRecurrent;
     }
-<<<<<<< HEAD
+
     
-    //cash perçu avant impot
+    //cash perï¿½u avant impot
     public double cashAvantImpot(){
     	cashAvantImpot=dd.getPrixDeVente()-dd.getVnc();
     	return cashAvantImpot;
 
     }
     
-    // cash perçu apres impot dans la duree du projet
+    // cash perï¿½u apres impot dans la duree du projet
     public double cashApresImpot(){
     	cashApresImpot=cashAvantImpot()-dd.getImpot();
     	return cashApresImpot;
 
     }
     
-	//sans tenir compte des opérations exceptionnelles
+	//sans tenir compte des opï¿½rations exceptionnelles
     public double calculVan(){
-=======
-    public double calculVAN(){
->>>>>>> e5b32b3b6975a191391d1a6504a569a6926afc1c
+
     	double som=0;
     			for(int i=0;i<dd.getDuree();i++){
     				som=som+(cashFlowRecurrent()/Math.pow(1+dd.getTauxActualisation(),i));
